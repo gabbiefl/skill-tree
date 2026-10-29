@@ -22,4 +22,5 @@ Ideia nova? Entra aqui, não no código. Isso evita *scope creep* (o escopo cres
 | B-013 | Perfil local (apelido) e progresso salvo no navegador (localStorage) | S | A fazer | 3 |
 | B-014 | XP e barra de progresso ao concluir habilidades | S | A fazer | 5 |
 | B-015 | Login/cadastro real com servidor (ex.: Firebase) | C | Adiado | — |
+| B-017 | Ao marcar uma habilidade, modal sugere marcar os pré-requisitos anteriores como concluídos (a pessoa confirma) | M | A fazer | 2–3 |
 | B-016 | Outras carreiras além de Front-end | W | Adiado | — |
