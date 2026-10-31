@@ -1,0 +1,243 @@
+{
+  "carreira": {
+    "id": "frontend",
+    "nome": "Desenvolvedor Front-end",
+    "descricao": "Constrói a parte visual e interativa de sites e aplicações web."
+  },
+  "areas": [
+    { "id": "fundamentos", "nome": "Fundamentos" },
+    { "id": "html", "nome": "HTML" },
+    { "id": "css", "nome": "CSS" },
+    { "id": "javascript", "nome": "JavaScript" },
+    { "id": "ferramentas", "nome": "Ferramentas" },
+    { "id": "qualidade", "nome": "Qualidade" },
+    { "id": "react", "nome": "React" }
+  ],
+  "habilidades": [
+    {
+      "id": "internet",
+      "nome": "Como a web funciona",
+      "area": "fundamentos",
+      "descricao": "Navegador, servidor, endereços (URL e DNS) e a conversa entre eles por HTTP.",
+      "prerequisitos": [],
+      "origem": "autores",
+      "fontes": []
+    },
+    {
+      "id": "logica",
+      "nome": "Lógica de programação",
+      "area": "fundamentos",
+      "descricao": "Pensar em passos: sequência, decisões e repetições, antes de qualquer linguagem.",
+      "prerequisitos": [],
+      "origem": "autores",
+      "fontes": []
+    },
+    {
+      "id": "terminal",
+      "nome": "Terminal básico",
+      "area": "fundamentos",
+      "descricao": "Navegar por pastas e executar comandos pela linha de comando.",
+      "prerequisitos": [],
+      "origem": "autores",
+      "fontes": []
+    },
+    {
+      "id": "html",
+      "nome": "HTML básico",
+      "area": "html",
+      "descricao": "Estrutura de uma página: tags, títulos, parágrafos, links e imagens.",
+      "prerequisitos": ["internet"],
+      "origem": "roadmap.sh",
+      "fontes": ["https://roadmap.sh/frontend"]
+    },
+    {
+      "id": "html-semantico",
+      "nome": "HTML semântico e formulários",
+      "area": "html",
+      "descricao": "Usar as tags que dão significado ao conteúdo e criar formulários para receber dados.",
+      "prerequisitos": ["html"],
+      "origem": "autores",
+      "fontes": []
+    },
+    {
+      "id": "acessibilidade",
+      "nome": "Acessibilidade",
+      "area": "html",
+      "descricao": "Fazer páginas que também funcionem para quem usa leitor de tela ou teclado.",
+      "prerequisitos": ["html-semantico"],
+      "origem": "roadmap.sh",
+      "fontes": ["https://roadmap.sh/frontend"]
+    },
+    {
+      "id": "seo",
+      "nome": "SEO básico",
+      "area": "html",
+      "descricao": "Organizar a página para que mecanismos de busca a entendam e a encontrem.",
+      "prerequisitos": ["html-semantico"],
+      "origem": "roadmap.sh",
+      "fontes": ["https://roadmap.sh/frontend"]
+    },
+    {
+      "id": "css",
+      "nome": "CSS básico",
+      "area": "css",
+      "descricao": "Cores, fontes, espaçamentos e seletores para dar aparência à página.",
+      "prerequisitos": ["html"],
+      "origem": "roadmap.sh",
+      "fontes": ["https://roadmap.sh/frontend"]
+    },
+    {
+      "id": "layout",
+      "nome": "Layout (Flexbox e Grid)",
+      "area": "css",
+      "descricao": "Organizar elementos em linhas, colunas e grades.",
+      "prerequisitos": ["css"],
+      "origem": "autores",
+      "fontes": []
+    },
+    {
+      "id": "responsivo",
+      "nome": "Design responsivo",
+      "area": "css",
+      "descricao": "Adaptar a página a telas de celular, tablet e computador.",
+      "prerequisitos": ["layout"],
+      "origem": "roadmap.sh",
+      "fontes": ["https://roadmap.sh/frontend"]
+    },
+    {
+      "id": "ux",
+      "nome": "UX básico",
+      "area": "css",
+      "descricao": "Princípios de experiência do usuário: clareza, hierarquia visual e consistência.",
+      "prerequisitos": ["responsivo"],
+      "origem": "roadmap.sh",
+      "fontes": ["https://roadmap.sh/frontend"]
+    },
+    {
+      "id": "js-basico",
+      "nome": "JavaScript básico",
+      "area": "javascript",
+      "descricao": "Variáveis, funções, condicionais, laços, listas e objetos.",
+      "prerequisitos": ["logica"],
+      "origem": "roadmap.sh",
+      "fontes": ["https://roadmap.sh/frontend"]
+    },
+    {
+      "id": "dom",
+      "nome": "DOM e eventos",
+      "area": "javascript",
+      "descricao": "Alterar a página com JavaScript e reagir a cliques e teclas.",
+      "prerequisitos": ["js-basico", "html-semantico"],
+      "origem": "autores",
+      "fontes": []
+    },
+    {
+      "id": "js-async",
+      "nome": "JavaScript assíncrono",
+      "area": "javascript",
+      "descricao": "Lidar com tarefas que demoram, usando Promises e async/await.",
+      "prerequisitos": ["js-basico"],
+      "origem": "autores",
+      "fontes": []
+    },
+    {
+      "id": "api-rest",
+      "nome": "Consumo de APIs REST",
+      "area": "javascript",
+      "descricao": "Buscar e enviar dados a um servidor por meio de requisições HTTP.",
+      "prerequisitos": ["js-async", "internet"],
+      "origem": "roadmap.sh",
+      "fontes": ["https://roadmap.sh/frontend"]
+    },
+    {
+      "id": "typescript",
+      "nome": "TypeScript",
+      "area": "javascript",
+      "descricao": "JavaScript com tipos, que aponta erros antes de o código rodar.",
+      "prerequisitos": ["js-basico"],
+      "origem": "roadmap.sh",
+      "fontes": ["https://roadmap.sh/frontend"]
+    },
+    {
+      "id": "git",
+      "nome": "Git e GitHub",
+      "area": "ferramentas",
+      "descricao": "Versionar o código, voltar atrás em mudanças e colaborar com outras pessoas.",
+      "prerequisitos": ["terminal"],
+      "origem": "roadmap.sh",
+      "fontes": ["https://roadmap.sh/frontend"]
+    },
+    {
+      "id": "npm",
+      "nome": "npm e pacotes",
+      "area": "ferramentas",
+      "descricao": "Instalar e gerenciar bibliotecas de terceiros num projeto.",
+      "prerequisitos": ["js-basico", "terminal"],
+      "origem": "autores",
+      "fontes": []
+    },
+    {
+      "id": "build",
+      "nome": "Ferramentas de build (Vite)",
+      "area": "ferramentas",
+      "descricao": "Empacotar e servir o projeto durante o desenvolvimento e na publicação.",
+      "prerequisitos": ["npm"],
+      "origem": "autores",
+      "fontes": []
+    },
+    {
+      "id": "testes",
+      "nome": "Testes automatizados",
+      "area": "qualidade",
+      "descricao": "Escrever código que verifica se o seu código funciona.",
+      "prerequisitos": ["js-basico"],
+      "origem": "roadmap.sh",
+      "fontes": ["https://roadmap.sh/frontend"]
+    },
+    {
+      "id": "devtools",
+      "nome": "Depuração e DevTools",
+      "area": "qualidade",
+      "descricao": "Usar as ferramentas do navegador para inspecionar a página e achar erros.",
+      "prerequisitos": ["dom"],
+      "origem": "roadmap.sh",
+      "fontes": ["https://roadmap.sh/frontend"]
+    },
+    {
+      "id": "desempenho",
+      "nome": "Desempenho web",
+      "area": "qualidade",
+      "descricao": "Medir e melhorar a velocidade de carregamento e a fluidez da página.",
+      "prerequisitos": ["responsivo", "api-rest"],
+      "origem": "roadmap.sh",
+      "fontes": ["https://roadmap.sh/frontend"]
+    },
+    {
+      "id": "react",
+      "nome": "React",
+      "area": "react",
+      "descricao": "Montar interfaces a partir de componentes reutilizáveis.",
+      "prerequisitos": ["dom", "npm"],
+      "origem": "roadmap.sh",
+      "fontes": ["https://roadmap.sh/frontend"]
+    },
+    {
+      "id": "react-hooks",
+      "nome": "Estado e hooks no React",
+      "area": "react",
+      "descricao": "Guardar e atualizar dados dentro de componentes.",
+      "prerequisitos": ["react"],
+      "origem": "autores",
+      "fontes": []
+    },
+    {
+      "id": "react-api",
+      "nome": "Dados e APIs no React",
+      "area": "react",
+      "descricao": "Carregar dados de um servidor e exibi-los em componentes.",
+      "prerequisitos": ["react-hooks", "api-rest"],
+      "origem": "autores",
+      "fontes": []
+    }
+  ]
+}

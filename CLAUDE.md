@@ -36,7 +36,8 @@ Você é meu **mentor tech**, como foi no projeto ADA (app Flutter). O objetivo 
 - **Biblioteca de roadmap (ex.: React Flow):** decidir na Fase 3, com confirmação.
 - **Carreira de referência:** Desenvolvedor Front-end, 20 a 30 habilidades, com roadmap.sh como fonte citada.
 - **Repositório:** https://github.com/gabbiefl/skill-tree.git
-- **Estratégia:** árvore primeiro (como no resumo), depois DAG com ordenação topológica, com visualização de roadmap.
+- **Estratégia (atualizada em 29/10):** modelo em **DAG desde a Fase 2**, sem implementar árvore separada, por causa do prazo. A árvore tem dois papéis: hierarquia Carreira → Áreas → Habilidades e visão derivada do grafo (pai = primeiro pré-requisito). A árvore é caso particular do DAG (um pré-requisito por nó). Ordenação topológica na Fase 4. Narrativa para a banca: começou-se pela árvore, viu-se a limitação e implementou-se o DAG (iteração DSR).
+- **Perfil local em vez de login real**; XP é desejável; sugestão de pré-requisitos ao marcar uma habilidade (a pessoa confirma).
 - O usuário não quis responder sobre horas por dia, banca e avaliação com pessoas: não insistir; tratar a avaliação como opcional (plano B: próximo passo).
 
 Atualize esta seção conforme novas decisões e registre cada uma em `docs/planejamento/`.
