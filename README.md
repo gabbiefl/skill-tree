@@ -16,6 +16,7 @@
   <img src="https://img.shields.io/badge/React-20232a?style=flat-square&logo=react&logoColor=61dafb" alt="React">
   <img src="https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
   <img src="https://img.shields.io/badge/Vite-646cff?style=flat-square&logo=vite&logoColor=white" alt="Vite">
+  <img src="https://img.shields.io/badge/React%20Flow-ff0072?style=flat-square&logo=react&logoColor=white" alt="React Flow">
   <img src="https://img.shields.io/badge/Vitest-6e9f18?style=flat-square&logo=vitest&logoColor=white" alt="Vitest">
   <img src="https://img.shields.io/badge/GitHub%20Pages-222?style=flat-square&logo=github&logoColor=white" alt="GitHub Pages">
 </p>
@@ -55,6 +56,7 @@ A carreira de referência é **Desenvolvedor Front-end**.
 ## 🛠️ Tecnologias
 
 - [React](https://react.dev/) e [TypeScript](https://www.typescriptlang.org/)
+- [React Flow](https://reactflow.dev/) (`@xyflow/react`), que desenha a trilha como grafo interativo. A posição de cada habilidade e toda a lógica (estados, sugestão de pré-requisitos, ordenação) são do projeto; a biblioteca só cuida do desenho
 - [Vite](https://vite.dev/) (servidor de desenvolvimento e build)
 - [Vitest](https://vitest.dev/) (testes)
 

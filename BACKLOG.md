@@ -12,14 +12,14 @@ Ideia nova? Entra aqui, não no código. Isso evita *scope creep* (o escopo cres
 | B-003 | Dados da carreira em JSON (habilidades + pré-requisitos) | M | Feito | 1 |
 | B-004 | Modelo em DAG e regras de liberação (concluída / disponível / bloqueada) com testes | M | Feito | 2 |
 | B-019 | Árvore: hierarquia de áreas e visão derivada do grafo (pai = 1º pré-requisito) | M | A fazer | 3 |
-| B-005 | Interface básica: escolher objetivo, marcar conhecimentos, ver trilha | M | A fazer | 3 |
+| B-005 | Interface básica: escolher objetivo, marcar conhecimentos, ver trilha | M | Em andamento | 3 |
 | B-006 | Ordenação topológica (Kahn) com testes | M | A fazer | 4 |
 | B-007 | Detecção de ciclos nos dados | S | A fazer | 4 |
 | B-008 | README e repositório apresentáveis | M | A fazer | 7 |
 | B-009 | Roteiro e material da apresentação | M | A fazer | 8 |
-| B-010 | Avaliação com estudantes (versão reduzida ou plano B) | S | A fazer | 6 |
-| B-011 | Tela de escolha de carreira (só Front-end ativa; demais "em breve") | M | A fazer | 3 |
-| B-012 | Modal de conhecimentos prévios (habilidades de entrada agrupadas) | M | A fazer | 3 |
+| B-010 | Avaliação com estudantes: apresentar como próxima etapa, com roteiro de teste e questionário prontos | S | Adiado | 6 |
+| B-011 | Tela de escolha de carreira (só Front-end ativa; demais "em breve") | M | Em andamento | 3 |
+| B-012 | Modal de conhecimentos prévios (habilidades de entrada agrupadas) | M | Em andamento | 3 |
 | B-013 | Perfil local (apelido) e progresso salvo no navegador (localStorage) | S | A fazer | 3 |
 | B-014 | XP e barra de progresso ao concluir habilidades | S | A fazer | 5 |
 | B-015 | Login/cadastro real com servidor (ex.: Firebase) | C | Adiado | — |
