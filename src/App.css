@@ -165,8 +165,9 @@ main {
   flex-direction: column;
 }
 
+/* O React Flow precisa de um pai com altura definida. Não usar flex: 1 aqui,
+   pois o height: 100% do filho passa a valer zero. */
 .trilha {
-  flex: 1;
   min-height: 480px;
   height: calc(100vh - 150px);
 }
@@ -239,6 +240,16 @@ main {
 .modal h2 {
   margin-top: 0;
   color: var(--marinho);
+}
+
+/* Mantém o botão de confirmar visível mesmo quando a lista é maior que a tela. */
+.rodape-modal {
+  position: sticky;
+  bottom: -24px;
+  margin: 0 -24px -24px;
+  padding: 12px 24px;
+  background: #fff;
+  border-top: 1px solid var(--cinza-claro);
 }
 
 .botoes {

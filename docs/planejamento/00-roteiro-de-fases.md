@@ -7,15 +7,17 @@ Prazo: 29/10/2026 a 12/11/2026. Datas são alvos, não promessas; a ordem import
 | 0. Descoberta e decisões | 29–30/10 | Tecnologia, carreira, decisão árvore x DAG | feita |
 | 1. Dados da carreira | 30–31/10 | JSON de 25 habilidades com origem e fontes | feita |
 | 2. Modelo em DAG e regras | 1–3/11 | Grafo, estados, sugestão de pré-requisitos, testes | feita |
-| 3a. Interface essencial | 6–8/11 | Escolha de carreira, modal de conhecimentos, trilha em grafo (React Flow), marcar como concluída com sugestão | próxima |
-| 4. Ordenação topológica | 8–9/11 | Kahn + detecção de ciclos + testes; "ordem sugerida de estudo" na tela | |
-| 3b. Árvore, perfil local e XP | 9–10/11 | Visão em árvore (áreas e derivada), apelido + localStorage, XP | |
-| 7. README, deploy e demo | 10–11/11 | GitHub Pages, README final, cenário de demo ensaiado | |
-| 8. Roteiro da apresentação | 11–12/11 | Roteiro, perguntas prováveis da banca, ensaio | |
-| 6. Avaliação com estudantes | — | **Apresentada como próximo passo** (ver abaixo) | plano B |
+| 3a. Interface essencial (provisória) | 6/11 | Escolha de carreira, modal, trilha em React Flow | feita (será substituída pela interface nova) |
+| 4. Ordenação topológica | 7/11 | Kahn, detecção de ciclos, trilha personalizada, testes | feita |
+| 5. Tópicos e conclusão por tópicos | 7–8/11 | Tópicos no JSON (rascunho nosso, revisão dos autores), habilidade concluída = todos os tópicos, testes | |
+| 6. Interface nova (handoff) | 8–10/11 | Tokens e componentes do design, trilha em etapas (3A), painel lateral, modais, ordem de estudo | |
+| 7. Perfil local, XP e níveis | 10/11 | Salvar progresso no navegador, XP por tópico, níveis | |
+| 8. Deploy, README e demo | 10–11/11 | GitHub Pages, README final, cenário de demo ensaiado | |
+| 9. Roteiro da apresentação | 11–12/11 | Roteiro, perguntas prováveis da banca, ensaio | |
+| Avaliação | depois | Preliminar interna (integrantes do grupo) e apresentada à banca; com estudantes externos é a próxima etapa | plano B |
 
 **Estratégia (decidida em 29/10):** por causa do prazo, o modelo é o **DAG desde a Fase 2**, sem implementar uma árvore separada. A árvore tem dois papéis: (1) hierarquia de organização Carreira → Áreas → Habilidades; (2) visão derivada do grafo (o primeiro pré-requisito de cada habilidade é o "pai"), usada para mostrar por que a árvore não basta. Narrativa honesta para a banca: modelou-se primeiro como árvore, viu-se a limitação dos pré-requisitos múltiplos e implementou-se o DAG diretamente. Como a árvore é um caso particular do DAG (um pré-requisito por nó), as regras do DAG cobrem o que o resumo prometeu.
 
-**Reajuste de 06/11:** restam 6 dias, então a interface foi dividida. O essencial (3a) e a ordenação topológica (4) vêm antes do que é desejável (3b). Se atrasar, corta-se 3b (XP, perfil, visão em árvore) antes de cortar testes, README ou a ordenação topológica.
+**Reajuste de 07/11:** o aluno produziu um design completo (pasta `ref/`, fora do Git). Adotada a variação 3A (etapas horizontais). A ordenação topológica vem antes da interface nova porque é o coração do projeto. Se atrasar, corta-se nesta ordem: níveis e XP, telas extras ("Como funciona", "Sobre"), e por último o visual 3A (voltando ao grafo atual com destaque de ligações). Não se corta teste, README nem ordenação.
 
-**Avaliação (DSR):** teste de usabilidade com estudantes exige a interface pronta, participantes, consentimento e análise. Com a interface só ficando pronta por volta de 9/11, não cabe de forma séria antes de 12/11. Plano B: apresentar a avaliação como **próxima etapa**, com o roteiro do teste e o questionário prontos como material, e dizer com clareza que ela ainda não foi aplicada. Isso é compatível com o resumo, que a coloca entre as "próximas etapas".
+**Avaliação (DSR):** feita pelos integrantes do grupo e apresentada depois à banca. Deve ser chamada de avaliação preliminar interna, pois quem construiu o sistema conhece o caminho e tende a avaliá-lo melhor do que um usuário novo; o teste com estudantes externos é a etapa seguinte, compatível com o resumo.

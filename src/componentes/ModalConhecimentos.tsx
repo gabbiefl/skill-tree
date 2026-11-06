@@ -35,9 +35,11 @@ export default function ModalConhecimentos({ carreira, concluidas, onAlternar, o
           ))}
         </div>
 
-        <button type="button" className="botao" onClick={onConfirmar}>
-          Ver minha trilha
-        </button>
+        <div className="rodape-modal">
+          <button type="button" className="botao" onClick={onConfirmar}>
+            Ver minha trilha
+          </button>
+        </div>
       </div>
     </div>
   )
