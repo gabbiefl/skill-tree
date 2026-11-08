@@ -11,6 +11,13 @@
     { "id": 4, "nome": "Prática" },
     { "id": 5, "nome": "Frameworks" }
   ],
+  "niveis": [
+    { "nome": "Semente" },
+    { "nome": "Broto", "etapa": 1 },
+    { "nome": "Muda", "etapa": 2 },
+    { "nome": "Galho", "etapa": 3 },
+    { "nome": "Árvore", "etapa": 5 }
+  ],
   "areas": [
     { "id": "fundamentos", "nome": "Fundamentos", "etapa": 1 },
     { "id": "html", "nome": "HTML", "etapa": 2 },

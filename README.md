@@ -26,7 +26,7 @@
 
 Projeto desenvolvido para a Mostra Científica 2026.
 
-> **Status:** em desenvolvimento. Já funcionam: os dados da carreira, as regras de liberação, a ordenação topológica, os tópicos de estudo e a interface principal. Ainda faltam: salvar o progresso no navegador, XP e níveis, e o deploy (veja o [roteiro](docs/planejamento/00-roteiro-de-fases.md)).
+> **Status:** em desenvolvimento. Já funcionam: os dados da carreira, as regras de liberação, a ordenação topológica, os tópicos de estudo e a interface principal. Ainda faltam: o deploy no GitHub Pages e o material de apresentação (veja o [roteiro](docs/planejamento/00-roteiro-de-fases.md)).
 
 ## 🌱 O problema
 
@@ -52,7 +52,11 @@ A carreira de referência é **Desenvolvedor Front-end**.
 4. Ao clicar numa habilidade, abre-se o guia: descrição, pré-requisitos e uma lista de tópicos. A habilidade só é concluída quando todos os tópicos estão concluídos.
 5. O botão **Ver ordem de estudo** mostra a sequência do que falta, inclusive até uma meta (por exemplo, "quero chegar em React").
 
-> Planejado: salvar o progresso no navegador, XP e níveis. O andamento de cada item fica no [BACKLOG.md](BACKLOG.md).
+6. Cada tópico concluído rende **XP** (10 por tópico, mais 50 ao concluir a habilidade), e o nível sobe ao concluir as etapas da trilha: Semente, Broto, Muda, Galho e Árvore.
+
+**Privacidade:** o progresso é guardado só no navegador de quem usa (`localStorage`). Não há conta, servidor nem coleta de dados pessoais. O menu de configurações permite recomeçar do zero.
+
+O andamento de cada item fica no [BACKLOG.md](BACKLOG.md).
 
 ## 🛠️ Tecnologias
 
@@ -77,7 +81,7 @@ npm run build   # gera a versão de produção
 
 ```
 dados/             dados da carreira em JSON (habilidades, tópicos, áreas e etapas)
-src/dominio/       estruturas de dados e regras, sem React (grafo, estados, ordenação, progresso)
+src/dominio/       estruturas de dados e regras, sem React (grafo, estados, ordenação, progresso, XP)
 src/componentes/   interface em React (telas, modais, painel e trilha em etapas)
 src/estilos/       tokens e estilos do design
 docs/planejamento/ planejamento de cada fase

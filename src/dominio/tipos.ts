@@ -7,6 +7,13 @@ export interface Etapa {
   nome: string
 }
 
+// Nível de quem estuda. Sem "etapa" é o ponto de partida; com "etapa", o nível é alcançado ao somar o XP de
+// concluir essa etapa e as anteriores (o limiar de XP é calculado dos dados, não escrito no código).
+export interface Nivel {
+  nome: string
+  etapa?: number
+}
+
 export interface Area {
   id: string
   nome: string
@@ -39,6 +46,7 @@ export interface Habilidade {
 export interface Carreira {
   carreira: { id: string; nome: string; descricao: string }
   etapas: Etapa[]
+  niveis: Nivel[]
   areas: Area[]
   habilidades: Habilidade[]
 }

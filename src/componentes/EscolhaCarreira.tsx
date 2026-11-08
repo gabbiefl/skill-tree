@@ -6,6 +6,8 @@ interface Props {
   descricao: string
   totalAreas: number
   totalHabilidades: number
+  // Já existe progresso salvo: o botão passa a "Continuar".
+  continuar: boolean
   onComecar: () => void
 }
 
@@ -78,7 +80,7 @@ function ArteEmBreve({ linhas, nos }: { linhas: string; nos: number[][] }) {
   )
 }
 
-export default function EscolhaCarreira({ nome, descricao, totalAreas, totalHabilidades, onComecar }: Props) {
+export default function EscolhaCarreira({ nome, descricao, totalAreas, totalHabilidades, continuar, onComecar }: Props) {
   return (
     <main className="escolha">
       <span className="eyebrow">
@@ -108,7 +110,7 @@ export default function EscolhaCarreira({ nome, descricao, totalAreas, totalHabi
             </div>
             <span className="grow" />
             <button type="button" className="btn pri lg cheio" onClick={onComecar}>
-              Começar a trilha <Icone nome="setaDireita" />
+              {continuar ? 'Continuar a trilha' : 'Começar a trilha'} <Icone nome="setaDireita" />
             </button>
           </div>
         </article>

@@ -41,6 +41,7 @@ export default function ModalSugestao({ pendencia, onAceitar, onRecusar, onFecha
             {pendencia.nome}
             <span className="sub">Você está marcando esta agora</span>
           </span>
+          <span className="xp">+{pendencia.xpAlvo} XP</span>
         </div>
 
         <span className="lbl">Pré-requisitos pendentes · {pendencia.itens.length}</span>
@@ -55,8 +56,21 @@ export default function ModalSugestao({ pendencia, onAceitar, onRecusar, onFecha
                   : `Faltam ${item.faltam} de ${item.total} tópicos`}
               </span>
             </span>
+            <span className="xp">+{item.xp} XP</span>
           </div>
         ))}
+
+        <div className="sugestao-xp">
+          <span className="toast-xp">
+            <Icone nome="raio" /> +{pendencia.xpTotal} XP
+          </span>
+          <span>
+            {pendencia.nivelDepois
+              ? `Marcando todas, você sobe para o nível ${pendencia.nivelDepois.numero} · ${pendencia.nivelDepois.nome}.`
+              : 'Esse é o XP que você ganha marcando todas.'}
+          </span>
+        </div>
+
         <p className="nota">
           Se escolher “Não, só esta”, os pré-requisitos continuam pendentes e você pode marcá-los depois.
         </p>

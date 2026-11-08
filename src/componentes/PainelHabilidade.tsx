@@ -6,6 +6,7 @@ import Icone, { IconeEstado } from './Icones'
 import { calcularEstados } from '../dominio/estados'
 import type { Grafo } from '../dominio/grafo'
 import { progressoDaHabilidade } from '../dominio/progresso'
+import { XP_BONUS_HABILIDADE, XP_POR_TOPICO } from '../dominio/xp'
 import type { Area } from '../dominio/tipos'
 
 interface Props {
@@ -115,6 +116,9 @@ export default function PainelHabilidade({
         >
           <i style={{ width: `${(feitos / total) * 100}%` }} />
         </div>
+        <p className="pn-xp">
+          +{XP_POR_TOPICO} XP por tópico · +{XP_BONUS_HABILIDADE} XP ao concluir a habilidade
+        </p>
       </div>
 
       <div className="tps">

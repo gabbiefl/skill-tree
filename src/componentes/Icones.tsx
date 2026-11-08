@@ -39,6 +39,7 @@ const FORMAS = {
   estrela: <path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z" />,
   lapis: <path d="M4 20h4l10.5-10.5a2.1 2.1 0 0 0-3-3L5 17v3z" />,
   trocar: <path d="M4 8h14M14 4l4 4-4 4M20 16H6M10 12l-4 4 4 4" />,
+  lixeira: <path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12" />,
   engrenagem: (
     <>
       <circle cx="12" cy="12" r="3" />

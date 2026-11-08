@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { Grafo } from '../dominio/grafo'
 import { progressoDaHabilidade } from '../dominio/progresso'
+import { calcularXp } from '../dominio/xp'
 import type { Carreira } from '../dominio/tipos'
 import Icone from './Icones'
 import Modal from './Modal'
@@ -19,6 +20,7 @@ interface Props {
 export default function ModalConhecimentos({ carreira, grafo, topicosAtuais, onSalvar, onCancelar }: Props) {
   const [rascunho, setRascunho] = useState<ReadonlySet<string>>(topicosAtuais)
   const { concluidas, pendencia, alternarHabilidade, responder, fecharPendencia } = useMarcacao(
+    carreira,
     grafo,
     rascunho,
     setRascunho,
@@ -39,7 +41,7 @@ export default function ModalConhecimentos({ carreira, grafo, topicosAtuais, onS
                 {concluidas.size} de {carreira.habilidades.length} habilidades marcadas
               </span>
               <span className="resumo-s">
-                {rascunho.size} de {totalTopicos} tópicos concluídos
+                {rascunho.size} de {totalTopicos} tópicos concluídos · {calcularXp(grafo, rascunho)} XP
               </span>
             </div>
             <span className="grow" />

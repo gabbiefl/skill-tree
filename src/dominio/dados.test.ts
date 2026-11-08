@@ -41,6 +41,22 @@ describe('dados da carreira Front-end', () => {
     expect(frontend.habilidades.some((h) => h.prerequisitos.length === 0)).toBe(true)
   })
 
+  it('os níveis começam sem etapa e depois avançam em etapas existentes e crescentes', () => {
+    const [primeiro, ...demais] = frontend.niveis
+    expect(primeiro.etapa).toBeUndefined()
+    const etapas = frontend.etapas.map((e) => e.id)
+    let anterior = 0
+    for (const n of demais) {
+      expect(etapas, n.nome).toContain(n.etapa)
+      expect(n.etapa!, n.nome).toBeGreaterThan(anterior)
+      anterior = n.etapa!
+    }
+  })
+
+  it('o último nível corresponde à trilha completa (última etapa)', () => {
+    expect(frontend.niveis.at(-1)!.etapa).toBe(Math.max(...frontend.etapas.map((e) => e.id)))
+  })
+
   it('toda habilidade tem pelo menos 1 tópico', () => {
     for (const h of frontend.habilidades) {
       expect(h.topicos.length, `${h.id} sem tópicos`).toBeGreaterThan(0)

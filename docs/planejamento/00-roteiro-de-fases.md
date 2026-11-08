@@ -11,7 +11,7 @@ Prazo: 29/10/2026 a 12/11/2026. Datas são alvos, não promessas; a ordem import
 | 4. Ordenação topológica | 7/11 | Kahn, detecção de ciclos, trilha personalizada, testes | feita |
 | 5. Tópicos e conclusão por tópicos | 7–8/11 | Tópicos no JSON (rascunho nosso, revisão dos autores), habilidade concluída = todos os tópicos, testes | | feita (tópicos aguardam revisão) |
 | 6. Interface nova (handoff) | 8–10/11 | Tokens e componentes do design, trilha em etapas (3A), painel lateral, modais, ordem de estudo | | feita |
-| 7. Perfil local, XP e níveis | 10/11 | Salvar progresso no navegador, XP por tópico, níveis | |
+| 7. Perfil local, XP e níveis | 10/11 | Salvar progresso no navegador, XP por tópico, níveis | | feita |
 | 8. Deploy, README e demo | 10–11/11 | GitHub Pages, README final, cenário de demo ensaiado | |
 | 9. Roteiro da apresentação | 11–12/11 | Roteiro, perguntas prováveis da banca, ensaio | |
 | Avaliação | depois | Preliminar interna (integrantes do grupo) e apresentada à banca; com estudantes externos é a próxima etapa | plano B |

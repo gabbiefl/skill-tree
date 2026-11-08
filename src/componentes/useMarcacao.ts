@@ -9,6 +9,9 @@ import {
   marcarHabilidade,
   progressoDaHabilidade,
 } from '../dominio/progresso'
+import type { Carreira } from '../dominio/tipos'
+import { calcularXp, nivelDoXp, xpRestanteDaHabilidade } from '../dominio/xp'
+import type { InfoNivel } from '../dominio/xp'
 
 // Um pré-requisito pendente, já com o que o modal de sugestão precisa mostrar.
 export interface ItemPendente {
@@ -17,18 +20,23 @@ export interface ItemPendente {
   estado: Estado
   faltam: number
   total: number
+  xp: number // XP que ainda dá para ganhar nele
 }
 
 export interface Pendencia {
   id: string
   nome: string
+  xpAlvo: number
   itens: ItemPendente[]
+  xpTotal: number // ganho de "Sim, marcar todas"
+  nivelDepois: InfoNivel | null // preenchido se marcar todas faz subir de nível
 }
 
 // Fluxo de marcar/desmarcar uma habilidade inteira, usado no modal de conhecimentos
 // (sobre um rascunho) e no painel lateral (sobre o progresso real). "aplicar" recebe
 // o novo conjunto de tópicos concluídos; quem chama decide onde guardá-lo.
 export function useMarcacao(
+  carreira: Carreira,
   grafo: Grafo,
   topicos: ReadonlySet<string>,
   aplicar: (novos: ReadonlySet<string>) => void,
@@ -48,13 +56,27 @@ export function useMarcacao(
     }
     // Há pré-requisitos pendentes: a pessoa decide (o sistema só sugere).
     const estados = calcularEstados(grafo, concluidas)
+    const xpAntes = calcularXp(grafo, topicos)
+    const xpDepois = calcularXp(grafo, marcarComPrerequisitos(grafo, id, topicos))
+    const nivelAntes = nivelDoXp(carreira, xpAntes)
+    const nivelDepois = nivelDoXp(carreira, xpDepois)
     setPendencia({
       id,
       nome: grafo.habilidades.get(id)!.nome,
+      xpAlvo: xpRestanteDaHabilidade(grafo.habilidades.get(id)!, topicos),
+      xpTotal: xpDepois - xpAntes,
+      nivelDepois: nivelDepois.numero > nivelAntes.numero ? nivelDepois : null,
       itens: sugestoes.map((s) => {
         const h = grafo.habilidades.get(s)!
         const { feitos, total } = progressoDaHabilidade(h, topicos)
-        return { id: s, nome: h.nome, estado: estados.get(s)!, faltam: total - feitos, total }
+        return {
+          id: s,
+          nome: h.nome,
+          estado: estados.get(s)!,
+          faltam: total - feitos,
+          total,
+          xp: xpRestanteDaHabilidade(h, topicos),
+        }
       }),
     })
   }
