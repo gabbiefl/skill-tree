@@ -1,116 +1,134 @@
 import { useState } from 'react'
 import { frontend, grafoFrontend } from './carreiraFrontend'
-import { sugerirPrerequisitos } from './dominio/estados'
-import {
-  calcularConcluidas,
-  desmarcarHabilidade,
-  marcarComPrerequisitos,
-  marcarHabilidade,
-} from './dominio/progresso'
+import Cabecalho from './componentes/Cabecalho'
+import ChipEstado from './componentes/ChipEstado'
 import EscolhaCarreira from './componentes/EscolhaCarreira'
+import Icone from './componentes/Icones'
 import ModalConhecimentos from './componentes/ModalConhecimentos'
+import ModalOrdem from './componentes/ModalOrdem'
 import ModalSugestao from './componentes/ModalSugestao'
-import Trilha from './componentes/Trilha'
-import logo from './assets/horizontal-light-1200.png'
-import './App.css'
+import PainelHabilidade from './componentes/PainelHabilidade'
+import TrilhaEtapas from './componentes/trilha/TrilhaEtapas'
+import { useMarcacao } from './componentes/useMarcacao'
+import { alternarTopico } from './dominio/progresso'
 
-type Etapa = 'carreira' | 'conhecimentos' | 'trilha'
-
-// Habilidade que a pessoa marcou e que tem pré-requisitos pendentes (esperando a resposta).
-interface Pendencia {
-  id: string
-  sugestoes: string[]
-}
+type Tela = 'carreira' | 'trilha'
 
 export default function App() {
-  const [etapa, setEtapa] = useState<Etapa>('carreira')
+  const [tela, setTela] = useState<Tela>('carreira')
+  const [editando, setEditando] = useState(false)
+  const [verOrdem, setVerOrdem] = useState(false)
+  const [selecionada, setSelecionada] = useState<string | null>(null)
   // Única fonte de verdade: os tópicos que a pessoa concluiu. O resto é calculado.
   const [topicos, setTopicos] = useState<ReadonlySet<string>>(new Set())
-  const concluidas = calcularConcluidas(grafoFrontend, topicos)
-  const [pendencia, setPendencia] = useState<Pendencia | null>(null)
 
-  const nomeDe = (id: string) => grafoFrontend.habilidades.get(id)!.nome
+  // Marcar/desmarcar uma habilidade inteira (botão do painel), com a sugestão de pré-requisitos.
+  const marcacao = useMarcacao(grafoFrontend, topicos, setTopicos)
 
-  // Usada pelo modal de conhecimentos e pela trilha: o mesmo fluxo nos dois lugares.
-  function alternar(id: string) {
-    if (concluidas.has(id)) {
-      setTopicos(desmarcarHabilidade(grafoFrontend, id, topicos))
-      return
-    }
-    const sugestoes = sugerirPrerequisitos(grafoFrontend, id, concluidas)
-    if (sugestoes.length === 0) {
-      setTopicos(marcarHabilidade(grafoFrontend, id, topicos))
-    } else {
-      setPendencia({ id, sugestoes })
-    }
-  }
-
-  function responder(aceitou: boolean) {
-    if (!pendencia) return
-    setTopicos(
-      aceitou
-        ? marcarComPrerequisitos(grafoFrontend, pendencia.id, topicos)
-        : marcarHabilidade(grafoFrontend, pendencia.id, topicos),
-    )
-    setPendencia(null)
+  function comecar() {
+    setTela('trilha')
+    setEditando(true)
   }
 
   return (
-    <div className="app">
-      <header className="topo">
-        <img src={logo} alt="SkillTree" className="logo" />
-        {etapa !== 'carreira' && (
-          <div className="topo-info">
-            <span>
-              {frontend.carreira.nome}: {concluidas.size} de {frontend.habilidades.length} habilidades concluídas
-            </span>
-            <button type="button" className="botao botao-claro" onClick={() => setEtapa('conhecimentos')}>
-              Editar conhecimentos
-            </button>
-          </div>
-        )}
-      </header>
+    <div className="app st">
+      <Cabecalho
+        comMenu={tela === 'trilha'}
+        onLogo={() => setTela('carreira')}
+        onEditarConhecimentos={() => setEditando(true)}
+        onTrocarCarreira={() => {
+          setSelecionada(null)
+          setTela('carreira')
+        }}
+      />
 
-      {etapa === 'carreira' && (
+      {tela === 'carreira' && (
         <EscolhaCarreira
           nome={frontend.carreira.nome}
           descricao={frontend.carreira.descricao}
-          onEscolher={() => setEtapa('conhecimentos')}
+          totalAreas={frontend.areas.length}
+          totalHabilidades={frontend.habilidades.length}
+          onComecar={comecar}
         />
       )}
 
-      {etapa !== 'carreira' && (
-        <main>
-          <ul className="legenda" aria-label="Legenda">
-            <li><span className="cor cor-concluida" /> Concluída</li>
-            <li><span className="cor cor-disponivel" /> Disponível</li>
-            <li><span className="cor cor-bloqueada" /> Bloqueada</li>
-            <li className="legenda-dica">Clique numa habilidade para marcar ou desmarcar.</li>
-          </ul>
-          <Trilha
+      {tela === 'trilha' && (
+        <main className={`trilha-area${editando ? ' blur' : ''}${selecionada ? ' com-painel' : ''}`}>
+          <div className="sb">
+            <div>
+              <h2>Trilha · {frontend.carreira.nome}</h2>
+              <p>
+                {marcacao.concluidas.size} de {frontend.habilidades.length} habilidades concluídas. Clique numa
+                habilidade para ver o guia de estudo.
+              </p>
+            </div>
+            <div className="legend">
+              <ChipEstado estado="concluida" />
+              <ChipEstado estado="disponivel" />
+              <ChipEstado estado="bloqueada" />
+              <button type="button" className="btn out sm" onClick={() => setVerOrdem(true)}>
+                <Icone nome="livro" /> Ver ordem de estudo
+              </button>
+            </div>
+          </div>
+          <TrilhaEtapas
+            carreira={frontend}
             grafo={grafoFrontend}
-            areas={frontend.areas}
-            concluidas={concluidas}
-            onAlternar={alternar}
+            concluidas={marcacao.concluidas}
+            topicos={topicos}
+            selecionada={selecionada}
+            onSelecionar={setSelecionada}
           />
         </main>
       )}
 
-      {etapa === 'conhecimentos' && (
-        <ModalConhecimentos
-          carreira={frontend}
-          concluidas={concluidas}
-          onAlternar={alternar}
-          onConfirmar={() => setEtapa('trilha')}
+      {tela === 'trilha' && selecionada && (
+        <PainelHabilidade
+          grafo={grafoFrontend}
+          areas={frontend.areas}
+          habilidadeId={selecionada}
+          topicos={topicos}
+          concluidas={marcacao.concluidas}
+          onAlternarTopico={(id) => setTopicos(alternarTopico(topicos, id))}
+          onAlternarHabilidade={marcacao.alternarHabilidade}
+          onSelecionar={setSelecionada}
+          onFechar={() => setSelecionada(null)}
         />
       )}
 
-      {pendencia && (
+      {verOrdem && (
+        <ModalOrdem
+          carreira={frontend}
+          grafo={grafoFrontend}
+          concluidas={marcacao.concluidas}
+          topicos={topicos}
+          onSelecionar={(id) => {
+            setVerOrdem(false)
+            setSelecionada(id)
+          }}
+          onFechar={() => setVerOrdem(false)}
+        />
+      )}
+
+      {editando && (
+        <ModalConhecimentos
+          carreira={frontend}
+          grafo={grafoFrontend}
+          topicosAtuais={topicos}
+          onSalvar={(novos) => {
+            setTopicos(novos)
+            setEditando(false)
+          }}
+          onCancelar={() => setEditando(false)}
+        />
+      )}
+
+      {marcacao.pendencia && (
         <ModalSugestao
-          nome={nomeDe(pendencia.id)}
-          sugestoes={pendencia.sugestoes.map(nomeDe)}
-          onAceitar={() => responder(true)}
-          onRecusar={() => responder(false)}
+          pendencia={marcacao.pendencia}
+          onAceitar={() => marcacao.responder(true)}
+          onRecusar={() => marcacao.responder(false)}
+          onFechar={marcacao.fecharPendencia}
         />
       )}
     </div>

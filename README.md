@@ -16,7 +16,6 @@
   <img src="https://img.shields.io/badge/React-20232a?style=flat-square&logo=react&logoColor=61dafb" alt="React">
   <img src="https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
   <img src="https://img.shields.io/badge/Vite-646cff?style=flat-square&logo=vite&logoColor=white" alt="Vite">
-  <img src="https://img.shields.io/badge/React%20Flow-ff0072?style=flat-square&logo=react&logoColor=white" alt="React Flow">
   <img src="https://img.shields.io/badge/Vitest-6e9f18?style=flat-square&logo=vitest&logoColor=white" alt="Vitest">
   <img src="https://img.shields.io/badge/GitHub%20Pages-222?style=flat-square&logo=github&logoColor=white" alt="GitHub Pages">
 </p>
@@ -27,7 +26,7 @@
 
 Projeto desenvolvido para a Mostra Científica 2026.
 
-> **Status:** em desenvolvimento. O ambiente do projeto está pronto; a modelagem dos dados, as regras de liberação e a interface ainda serão construídas (veja o [roteiro](docs/planejamento/00-roteiro-de-fases.md)).
+> **Status:** em desenvolvimento. Já funcionam: os dados da carreira, as regras de liberação, a ordenação topológica, os tópicos de estudo e a interface principal. Ainda faltam: salvar o progresso no navegador, XP e níveis, e o deploy (veja o [roteiro](docs/planejamento/00-roteiro-de-fases.md)).
 
 ## 🌱 O problema
 
@@ -37,30 +36,31 @@ Na área de TI, linguagens, ferramentas e especializações mudam o tempo todo, 
 
 O SkillTree organiza trilhas de aprendizagem relacionando objetivos profissionais, habilidades e seus pré-requisitos. Como uma habilidade só é liberada depois das que a antecedem, essas relações são modeladas com estruturas de dados:
 
-- 🌳 **Árvore:** cada nó é uma habilidade e seus ancestrais são os pré-requisitos. Por meio de percursos, calcula-se quais habilidades estão **concluídas**, **disponíveis** ou **bloqueadas**.
-- 🕸️ **Grafo direcionado acíclico (DAG):** evolução para habilidades com mais de um pré-requisito. A **ordenação topológica** gera uma sequência de estudo válida a partir do que a pessoa já domina.
+- 🕸️ **Grafo direcionado acíclico (DAG):** é o modelo principal. Cada habilidade lista seus pré-requisitos, e pode ter vários. A partir do que a pessoa já concluiu, calcula-se o estado de cada habilidade: **concluída**, **disponível** (todos os pré-requisitos concluídos) ou **bloqueada**.
+- 🌳 **Árvore:** é o caso particular do DAG em que cada habilidade tem um só pré-requisito, e foi o ponto de partida do projeto. O DAG evolui a árvore para os casos de vários pré-requisitos (por exemplo, o DOM exige JavaScript **e** HTML semântico). A estrutura Carreira → Áreas → Habilidades também é uma árvore.
+- 🔢 **Ordenação topológica (algoritmo de Kahn):** gera uma sequência de estudo válida, com cada habilidade depois dos seus pré-requisitos, e detecta ciclos de pré-requisitos, que invalidariam a trilha.
 
 O diferencial é que a trilha se **adapta ao conhecimento prévio** de quem usa, em vez de seguir um caminho único e rígido.
 
 A carreira de referência é **Desenvolvedor Front-end**.
 
-## 🧭 Como vai funcionar
+## 🧭 Como funciona
 
-1. A pessoa cria um perfil simples e escolhe a carreira.
-2. Um modal pergunta quais tecnologias ela já conhece.
-3. A trilha é liberada, mostrando o passo a passo com habilidades **concluídas**, **disponíveis** e **bloqueadas**.
-4. Ao concluir uma habilidade, a trilha se atualiza e a pessoa ganha **XP**.
+1. A pessoa escolhe a carreira.
+2. Um modal pergunta quais habilidades ela já conhece.
+3. A trilha aparece em etapas, com as áreas e as habilidades **concluídas**, **disponíveis** e **bloqueadas**.
+4. Ao clicar numa habilidade, abre-se o guia: descrição, pré-requisitos e uma lista de tópicos. A habilidade só é concluída quando todos os tópicos estão concluídos.
+5. O botão **Ver ordem de estudo** mostra a sequência do que falta, inclusive até uma meta (por exemplo, "quero chegar em React").
 
-> Funcionalidades planejadas. O andamento de cada uma fica no [BACKLOG.md](BACKLOG.md).
+> Planejado: salvar o progresso no navegador, XP e níveis. O andamento de cada item fica no [BACKLOG.md](BACKLOG.md).
 
 ## 🛠️ Tecnologias
 
 - [React](https://react.dev/) e [TypeScript](https://www.typescriptlang.org/)
-- [React Flow](https://reactflow.dev/) (`@xyflow/react`), que desenha a trilha como grafo interativo. A posição de cada habilidade e toda a lógica (estados, sugestão de pré-requisitos, ordenação) são do projeto; a biblioteca só cuida do desenho
 - [Vite](https://vite.dev/) (servidor de desenvolvimento e build)
 - [Vitest](https://vitest.dev/) (testes)
 
-A lógica das estruturas de dados fica separada da interface, em `src/dominio/`, em TypeScript puro.
+A lógica das estruturas de dados fica separada da interface, em `src/dominio/`, em TypeScript puro. A trilha é HTML/CSS comum, e as ligações entre os blocos são um SVG desenhado a partir da posição real de cada bloco, sem biblioteca de grafos.
 
 ## 🚀 Como executar
 
@@ -76,9 +76,10 @@ npm run build   # gera a versão de produção
 ## 📁 Estrutura
 
 ```
-dados/             dados da carreira em JSON (a criar)
-src/dominio/       estruturas de dados e regras, sem React
-src/componentes/   interface em React (a criar)
+dados/             dados da carreira em JSON (habilidades, tópicos, áreas e etapas)
+src/dominio/       estruturas de dados e regras, sem React (grafo, estados, ordenação, progresso)
+src/componentes/   interface em React (telas, modais, painel e trilha em etapas)
+src/estilos/       tokens e estilos do design
 docs/planejamento/ planejamento de cada fase
 BACKLOG.md         itens e prioridades
 ```

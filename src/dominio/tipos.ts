@@ -1,9 +1,16 @@
 // Tipos: o "molde" TypeScript do JSON em dados/frontend.json.
 // Se o JSON destoar deste molde, o editor avisa antes de rodar o programa.
 
+// Coluna da trilha (ex.: "Etapa 2 · Estrutura"). As ligações entre áreas sempre avançam de etapa.
+export interface Etapa {
+  id: number
+  nome: string
+}
+
 export interface Area {
   id: string
   nome: string
+  etapa: number
 }
 
 // Passo de estudo dentro de uma habilidade. Não é nó do grafo: é um checklist.
@@ -31,6 +38,7 @@ export interface Habilidade {
 
 export interface Carreira {
   carreira: { id: string; nome: string; descricao: string }
+  etapas: Etapa[]
   areas: Area[]
   habilidades: Habilidade[]
 }

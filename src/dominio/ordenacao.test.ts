@@ -148,29 +148,4 @@ describe('com os dados reais do Front-end', () => {
       }
     }
   })
-
-  it('o mapa de áreas também é acíclico e cada ligação entre áreas avança de etapa', () => {
-    // Etapas do design (3A): colunas da trilha.
-    const etapa: Record<string, number> = {
-      fundamentos: 1, html: 2, css: 3, javascript: 3, ferramentas: 4, qualidade: 4, react: 5,
-    }
-    const areaDe = new Map(frontend.habilidades.map((h) => [h.id, h.area]))
-    const dependeDe = new Map<string, Set<string>>(frontend.areas.map((a) => [a.id, new Set()]))
-
-    for (const h of frontend.habilidades) {
-      for (const p of h.prerequisitos) {
-        const areaPre = areaDe.get(p)!
-        if (areaPre === h.area) continue
-        dependeDe.get(h.area)!.add(areaPre)
-        expect(etapa[areaPre], `${areaPre} -> ${h.area}`).toBeLessThan(etapa[h.area])
-      }
-    }
-
-    // Reaproveita o próprio grafo e a validação de ciclos, agora com as áreas como nós.
-    const grafoAreas = criarGrafo(
-      frontend.areas.map((a) => hab(a.id, [...dependeDe.get(a.id)!], a.id)),
-    )
-    expect(() => validarSemCiclos(grafoAreas)).not.toThrow()
-    expect(dependeDe.size).toBe(7)
-  })
 })

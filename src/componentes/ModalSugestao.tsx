@@ -1,34 +1,66 @@
+import { CLASSE_DO_ESTADO } from './estado'
+import Icone, { IconeEstado } from './Icones'
+import Modal from './Modal'
+import type { Pendencia } from './useMarcacao'
+
 interface Props {
-  nome: string
-  sugestoes: string[] // nomes dos pré-requisitos pendentes, dos mais básicos aos mais avançados
+  pendencia: Pendencia
   onAceitar: () => void
   onRecusar: () => void
+  onFechar: () => void
 }
 
 // O sistema sugere; quem decide é a pessoa.
-export default function ModalSugestao({ nome, sugestoes, onAceitar, onRecusar }: Props) {
+export default function ModalSugestao({ pendencia, onAceitar, onRecusar, onFechar }: Props) {
   return (
-    <div className="fundo fundo-topo">
-      <div className="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-sugestao">
-        <h2 id="titulo-sugestao">Marcar também os pré-requisitos?</h2>
-        <p>
-          Para aprender <strong>{nome}</strong>, antes costuma ser preciso saber:
-        </p>
-        <ul>
-          {sugestoes.map((s) => (
-            <li key={s}>{s}</li>
-          ))}
-        </ul>
-        <p>Quer marcar essas habilidades como concluídas também?</p>
-        <div className="botoes">
-          <button type="button" className="botao" onClick={onAceitar}>
-            Sim, marcar todas
+    <Modal
+      porCima
+      titulo="Marcar também os pré-requisitos?"
+      descricao={
+        <>
+          Para concluir <strong>{pendencia.nome}</strong>, antes vêm estas habilidades. Elas ainda estão pendentes.
+        </>
+      }
+      onFechar={onFechar}
+      rodape={
+        <>
+          <span className="grow" />
+          <button type="button" className="btn out" onClick={onRecusar}>
+            Não, só esta
           </button>
-          <button type="button" className="botao botao-claro" onClick={onRecusar}>
-            Não, só {nome}
+          <button type="button" className="btn pri" onClick={onAceitar}>
+            <Icone nome="check" /> Sim, marcar todas
           </button>
+        </>
+      }
+    >
+      <div className="sugestao">
+        <div className="sk lg is-done">
+          <span className="ico"><Icone nome="check" /></span>
+          <span className="nm">
+            {pendencia.nome}
+            <span className="sub">Você está marcando esta agora</span>
+          </span>
         </div>
+
+        <span className="lbl">Pré-requisitos pendentes · {pendencia.itens.length}</span>
+        {pendencia.itens.map((item) => (
+          <div key={item.id} className={`sk lg ${CLASSE_DO_ESTADO[item.estado]}`}>
+            <span className="ico"><IconeEstado estado={item.estado} /></span>
+            <span className="nm">
+              {item.nome}
+              <span className="sub">
+                {item.faltam === item.total
+                  ? `Faltam ${item.total} tópicos`
+                  : `Faltam ${item.faltam} de ${item.total} tópicos`}
+              </span>
+            </span>
+          </div>
+        ))}
+        <p className="nota">
+          Se escolher “Não, só esta”, os pré-requisitos continuam pendentes e você pode marcá-los depois.
+        </p>
       </div>
-    </div>
+    </Modal>
   )
 }

@@ -33,7 +33,7 @@ Você é meu **mentor tech**, como foi no projeto ADA (app Flutter). O objetivo 
 - **Estado inicial:** nada existia; projeto começou do zero em 29/10/2026.
 - **Interface:** web. **Stack:** React + TypeScript + Vite + Vitest (escolha do aluno, que já conhece React e TS; JavaScript é a linguagem da disciplina). **Publicação:** GitHub Pages.
 - **Lógica separada da interface:** árvore, regras e ordenação topológica em `src/dominio/`, TypeScript puro, sem importar React.
-- **Biblioteca de roadmap:** React Flow (`@xyflow/react`), aprovada em 06/11. Posições por nível calculadas pelo projeto (sem dagre).
+- **Trilha sem biblioteca de grafos (decidido em 08/11):** o React Flow foi usado na versão provisória e removido; a trilha 3A é HTML/CSS (colunas) com SVG por cima para as ligações (`src/componentes/trilha/`), com a geometria em funções puras e testadas. O cálculo de níveis (`niveis.ts`) foi removido por ter ficado sem uso (as etapas vêm dos dados).
 - **Avaliação:** feita pelos integrantes do grupo e apresentada depois à banca; chamar de avaliação preliminar interna e dizer que a com estudantes externos é a próxima etapa.
 - **Carreira de referência:** Desenvolvedor Front-end, 20 a 30 habilidades, com roadmap.sh como fonte citada.
 - **Repositório:** https://github.com/gabbiefl/skill-tree.git

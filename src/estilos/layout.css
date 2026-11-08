@@ -1,0 +1,538 @@
+/* Layout da aplicação (nosso). Os tokens e componentes do design ficam em skilltree.css. */
+
+body {
+  margin: 0;
+  background: var(--st-bg);
+}
+
+.app.st {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+/* ---------- cabeçalho ---------- */
+.hd {
+  position: sticky;
+  top: 0;
+  height: 72px;
+  flex: none;
+  background: #fff;
+  border-bottom: 1px solid var(--st-line);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 32px;
+  z-index: 5;
+}
+
+.hd-logo-btn {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.hd-menu {
+  position: relative;
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  min-width: 270px;
+  background: #fff;
+  border: 2px solid var(--st-navy);
+  border-radius: 16px;
+  box-shadow: var(--st-sh-md);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  z-index: 7;
+}
+
+.menu button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 48px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  font: 600 16px/20px var(--st-font-head);
+  color: var(--st-navy);
+  text-align: left;
+}
+
+.menu button:hover {
+  background: var(--st-navy-50);
+}
+
+.menu .i {
+  font-size: 20px;
+}
+
+.cheio {
+  width: 100%;
+}
+
+/* ---------- escolha da carreira ---------- */
+.escolha {
+  width: 100%;
+  max-width: 1336px;
+  margin: 0 auto;
+  padding: 36px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.escolha .h-display {
+  font-size: clamp(32px, 4.2vw, 48px);
+  line-height: 1.17;
+}
+
+.cartoes {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+  margin-top: 22px;
+  text-align: left;
+}
+
+.passos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.legenda-mapa {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+@media (max-width: 1100px) {
+  .cartoes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .passos {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .cartoes {
+    grid-template-columns: 1fr;
+  }
+  .hd {
+    padding: 0 16px;
+  }
+}
+
+/* ---------- modais ---------- */
+.scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 26, 110, 0.58);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 30;
+}
+
+.scrim.topo {
+  z-index: 40;
+}
+
+.md {
+  position: relative;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: var(--st-sh-lg);
+  width: min(640px, 100%);
+  max-height: calc(100vh - 48px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.md.larga {
+  width: min(1200px, 100%);
+}
+
+.scrim.topo .md {
+  width: min(700px, 100%);
+}
+
+.md:focus {
+  outline: none;
+}
+
+.md-b {
+  overflow-y: auto;
+  flex: 1;
+  padding-bottom: 18px;
+}
+
+.md-f {
+  flex: none;
+  flex-wrap: wrap;
+}
+
+.md-h {
+  padding-right: 88px;
+}
+
+.md-cols {
+  column-width: 320px;
+  column-gap: 32px;
+}
+
+.md-cols .grp {
+  break-inside: avoid;
+  margin-bottom: 18px;
+}
+
+.resumo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.resumo-t {
+  font: 800 17px/22px var(--st-font-head);
+  color: var(--st-navy);
+}
+
+.resumo-s {
+  font-size: 15px;
+  line-height: 20px;
+  color: var(--st-ink-2);
+}
+
+.sugestao {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sugestao .nota {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--st-ink-2);
+  margin-top: 4px;
+}
+
+/* ---------- barra da trilha e legenda ---------- */
+.sb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  padding: 16px 32px;
+}
+
+.sb h2 {
+  font-size: 26px;
+  line-height: 34px;
+}
+
+.sb p {
+  font-size: 16px;
+  color: var(--st-ink-2);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ---------- animações e estados do fundo ---------- */
+.blur {
+  filter: blur(2px);
+}
+
+/* ---------- painel lateral de detalhes ---------- */
+.pn {
+  position: fixed;
+  right: 0;
+  top: 72px;
+  bottom: 0;
+  width: min(440px, 100%);
+  background: #fff;
+  border-left: 2px solid var(--st-navy);
+  box-shadow: -18px 0 48px rgba(26, 26, 110, 0.16);
+  padding: 20px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  z-index: 6;
+}
+
+.pn:focus {
+  outline: none;
+}
+
+.pn-top + .lbl {
+  margin-top: 10px;
+}
+
+.pn-prog {
+  margin-top: 14px;
+}
+
+.pn-prog-t {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.pn-prog-t b {
+  font: 800 16px/22px var(--st-font-head);
+  color: var(--st-navy);
+}
+
+.pn-prog .bar {
+  margin-top: 6px;
+}
+
+.pn .btn.cheio {
+  margin-top: 14px;
+  height: 52px;
+  flex: none;
+}
+
+.pn .tps {
+  flex: none;
+}
+
+/* ---------- trilha em etapas (variação 3A do design) ---------- */
+.trilha-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  transition: margin-right 220ms ease;
+}
+
+/* Com o painel aberto, a trilha abre espaço para ele em vez de ficar escondida atrás. */
+.trilha-area.com-painel {
+  margin-right: min(440px, 100%);
+}
+
+.etapas-rolagem {
+  overflow-x: auto;
+  padding: 0 24px 24px;
+}
+
+.etapas {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 16px;
+  padding-bottom: 72px; /* espaço para os canais das ligações que passam por baixo dos blocos */
+  /* Largura mínima por coluna: se não couber (painel aberto, janela estreita), a trilha rola na horizontal. */
+  min-width: calc(var(--n) * 232px + (var(--n) - 1) * 16px);
+}
+
+.lane {
+  position: relative;
+  border-radius: 20px;
+  background: rgba(26, 26, 110, 0.04);
+  padding: 44px 12px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  min-height: 560px;
+}
+
+.lane > .lbl {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
+.edges {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.edges.fundo {
+  z-index: 1;
+}
+
+.edges.topo {
+  z-index: 3;
+}
+
+.ar-wrap {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ar {
+  width: 100%;
+  border-radius: 16px;
+  background: #fff;
+  border: 2px solid var(--st-navy);
+  padding: 12px 14px;
+  color: var(--st-navy);
+  box-shadow: var(--st-sh-sm);
+  text-align: left;
+}
+
+.ar.is-avail {
+  border: 3px solid var(--st-sky);
+  padding: 11px 13px;
+  box-shadow: 0 0 0 4px rgba(31, 134, 208, 0.16);
+}
+
+.ar.is-done {
+  background: var(--st-done);
+}
+
+.ar.is-locked {
+  background: var(--st-locked-bg);
+  border: 2px dashed var(--st-locked-line);
+  color: var(--st-locked-ink);
+  box-shadow: none;
+}
+
+.ar-cab {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.ar-nome {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ar.open .ar-rows {
+  margin-top: 12px;
+  gap: 10px;
+}
+
+.ar-wrap .tags {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 0 4px;
+}
+
+.ar-wrap .tags .lbl {
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.ar-wrap .tags .chip {
+  cursor: pointer;
+  height: auto;
+  min-height: 26px;
+  white-space: normal;
+  text-align: left;
+}
+
+/* Anel de foco visível em todos os botões (acessibilidade). */
+.app button:focus-visible {
+  outline: none;
+  box-shadow: var(--st-focus);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trilha-area {
+    transition: none;
+  }
+}
+
+/* Linhas de habilidade crescem com nomes longos (colunas estreitas, painel aberto). */
+.ar-rows .sk {
+  height: auto;
+  min-height: 52px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.ar-rows .sk .ct {
+  margin-left: 6px;
+}
+
+/* ---------- modal de ordem de estudo ---------- */
+.ordem {
+  padding: 4px 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo select {
+  height: 48px;
+  padding: 0 14px;
+  border: 2px solid var(--st-navy);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--st-navy);
+  font: 600 16px/20px var(--st-font-head);
+}
+
+.ordem-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ordem-lista .sk {
+  cursor: pointer;
+}
+
+.vazio {
+  color: var(--st-ink-2);
+  padding: 8px 0 4px;
+}
