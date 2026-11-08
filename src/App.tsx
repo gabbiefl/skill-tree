@@ -5,9 +5,7 @@ import Cabecalho from './componentes/Cabecalho'
 import type { Ganho } from './componentes/Cabecalho'
 import ChipEstado from './componentes/ChipEstado'
 import EscolhaCarreira from './componentes/EscolhaCarreira'
-import Icone from './componentes/Icones'
 import ModalConhecimentos from './componentes/ModalConhecimentos'
-import ModalOrdem from './componentes/ModalOrdem'
 import ModalRecomecar from './componentes/ModalRecomecar'
 import ModalSugestao from './componentes/ModalSugestao'
 import PainelHabilidade from './componentes/PainelHabilidade'
@@ -21,7 +19,6 @@ type Tela = 'carreira' | 'trilha'
 export default function App() {
   const [tela, setTela] = useState<Tela>('carreira')
   const [editando, setEditando] = useState(false)
-  const [verOrdem, setVerOrdem] = useState(false)
   const [recomecando, setRecomecando] = useState(false)
   const [selecionada, setSelecionada] = useState<string | null>(null)
   const [ganho, setGanho] = useState<Ganho | null>(null)
@@ -112,9 +109,6 @@ export default function App() {
               <ChipEstado estado="concluida" />
               <ChipEstado estado="disponivel" />
               <ChipEstado estado="bloqueada" />
-              <button type="button" className="btn out sm" onClick={() => setVerOrdem(true)}>
-                <Icone nome="livro" /> Ver ordem de estudo
-              </button>
             </div>
           </div>
           <TrilhaEtapas
@@ -139,20 +133,6 @@ export default function App() {
           onAlternarHabilidade={marcacao.alternarHabilidade}
           onSelecionar={setSelecionada}
           onFechar={() => setSelecionada(null)}
-        />
-      )}
-
-      {verOrdem && (
-        <ModalOrdem
-          carreira={frontend}
-          grafo={grafoFrontend}
-          concluidas={marcacao.concluidas}
-          topicos={topicos}
-          onSelecionar={(id) => {
-            setVerOrdem(false)
-            setSelecionada(id)
-          }}
-          onFechar={() => setVerOrdem(false)}
         />
       )}
 

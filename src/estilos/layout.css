@@ -496,48 +496,6 @@ body {
   margin-left: 6px;
 }
 
-/* ---------- modal de ordem de estudo ---------- */
-.ordem {
-  padding: 4px 40px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.campo {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.campo select {
-  height: 48px;
-  padding: 0 14px;
-  border: 2px solid var(--st-navy);
-  border-radius: 12px;
-  background: #fff;
-  color: var(--st-navy);
-  font: 600 16px/20px var(--st-font-head);
-}
-
-.ordem-lista {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.ordem-lista .sk {
-  cursor: pointer;
-}
-
-.vazio {
-  color: var(--st-ink-2);
-  padding: 8px 0 4px;
-}
-
 /* ---------- XP e nível ---------- */
 .bar > i {
   transition: width 600ms ease;

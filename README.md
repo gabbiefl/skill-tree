@@ -26,7 +26,7 @@
 
 Projeto desenvolvido para a Mostra Científica 2026.
 
-> **Status:** em desenvolvimento. Já funcionam: os dados da carreira, as regras de liberação, a ordenação topológica, os tópicos de estudo e a interface principal. Ainda faltam: o deploy no GitHub Pages e o material de apresentação (veja o [roteiro](docs/planejamento/00-roteiro-de-fases.md)).
+> **Status:** em desenvolvimento. Já funcionam: os dados da carreira, as regras de liberação, a ordenação topológica, os tópicos de estudo, a interface principal, o progresso salvo no navegador, o XP e os níveis. Ainda faltam: o deploy no GitHub Pages e o material de apresentação (veja o [roteiro](docs/planejamento/00-roteiro-de-fases.md)).
 
 ## 🌱 O problema
 
@@ -38,7 +38,7 @@ O SkillTree organiza trilhas de aprendizagem relacionando objetivos profissionai
 
 - 🕸️ **Grafo direcionado acíclico (DAG):** é o modelo principal. Cada habilidade lista seus pré-requisitos, e pode ter vários. A partir do que a pessoa já concluiu, calcula-se o estado de cada habilidade: **concluída**, **disponível** (todos os pré-requisitos concluídos) ou **bloqueada**.
 - 🌳 **Árvore:** é o caso particular do DAG em que cada habilidade tem um só pré-requisito, e foi o ponto de partida do projeto. O DAG evolui a árvore para os casos de vários pré-requisitos (por exemplo, o DOM exige JavaScript **e** HTML semântico). A estrutura Carreira → Áreas → Habilidades também é uma árvore.
-- 🔢 **Ordenação topológica (algoritmo de Kahn):** gera uma sequência de estudo válida, com cada habilidade depois dos seus pré-requisitos, e detecta ciclos de pré-requisitos, que invalidariam a trilha.
+- 🔢 **Ordenação topológica (algoritmo de Kahn):** gera uma sequência de estudo válida, com cada habilidade depois dos seus pré-requisitos (inclusive até uma meta, como "chegar em React"), e detecta ciclos de pré-requisitos, que invalidariam a trilha. Está implementada e testada em `src/dominio/ordenacao.ts` e valida os dados da carreira; a tela de "ordem de estudo" foi retirada da interface por decisão do grupo.
 
 O diferencial é que a trilha se **adapta ao conhecimento prévio** de quem usa, em vez de seguir um caminho único e rígido.
 
@@ -50,9 +50,7 @@ A carreira de referência é **Desenvolvedor Front-end**.
 2. Um modal pergunta quais habilidades ela já conhece.
 3. A trilha aparece em etapas, com as áreas e as habilidades **concluídas**, **disponíveis** e **bloqueadas**.
 4. Ao clicar numa habilidade, abre-se o guia: descrição, pré-requisitos e uma lista de tópicos. A habilidade só é concluída quando todos os tópicos estão concluídos.
-5. O botão **Ver ordem de estudo** mostra a sequência do que falta, inclusive até uma meta (por exemplo, "quero chegar em React").
-
-6. Cada tópico concluído rende **XP** (10 por tópico, mais 50 ao concluir a habilidade), e o nível sobe ao concluir as etapas da trilha: Semente, Broto, Muda, Galho e Árvore.
+5. Cada tópico concluído rende **XP** (10 por tópico, mais 50 ao concluir a habilidade), e o nível sobe ao concluir as etapas da trilha: Semente, Broto, Muda, Galho e Árvore.
 
 **Privacidade:** o progresso é guardado só no navegador de quem usa (`localStorage`). Não há conta, servidor nem coleta de dados pessoais. O menu de configurações permite recomeçar do zero.
 
