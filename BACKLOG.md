@@ -25,11 +25,11 @@ Ideia nova? Entra aqui, não no código. Isso evita *scope creep* (o escopo cres
 | B-015 | Login/cadastro real com servidor (ex.: Firebase) | C | Adiado | — |
 | B-017 | Ao marcar uma habilidade, modal sugere marcar os pré-requisitos anteriores como concluídos (a pessoa confirma) | M | A fazer | 2–3 |
 | B-018 | Recomendação de materiais de estudo por habilidade (curadoria dos autores) | S | A fazer | 1 |
-| B-020 | Desmarcar habilidade com dependentes concluídos: sugerir desmarcá-los também | C | A fazer | 3 |
+| B-020 | Desmarcar habilidade com dependentes concluídos: sugerir desmarcá-los também | C | Feito (resolvido: conclusão é calculada a partir dos tópicos) | 3 |
 | B-021 | Áreas agrupadas e expansíveis na trilha (visual menos poluído) | M | A fazer | 3 |
 | B-022 | Painel de detalhes ao clicar numa habilidade (descrição e tópicos) | M | A fazer | 3 |
-| B-023 | Tópicos por habilidade no JSON (rascunho nosso, revisão dos autores; não são nós do grafo) | M | A fazer | 3 |
-| B-024 | Regra de conclusão por tópicos: habilidade concluída = todos os tópicos concluídos; botão "marcar todos" no painel; XP por tópico | M | A fazer | 3 |
+| B-023 | Tópicos por habilidade no JSON (rascunho nosso, revisão dos autores; não são nós do grafo) | M | Em andamento (rascunho pronto, aguardando revisão dos autores) | 3 |
+| B-024 | Regra de conclusão por tópicos: habilidade concluída = todos os tópicos concluídos; botão "marcar todos" no painel; XP por tópico | M | Em andamento (domínio pronto; falta o painel na Fase 6) | 3 |
 | B-025 | Interface nova a partir do handoff (tokens, trilha em etapas 3A, painel lateral, modais, cabeçalho) | M | A fazer | 6 |
 | B-026 | Níveis (Semente a Árvore) e barra de XP no cabeçalho | S | A fazer | 7 |
 | B-027 | Telas "Como funciona" e "Sobre o projeto" | C | A fazer | 6 |

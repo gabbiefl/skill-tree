@@ -1,13 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import frontendJson from '../../dados/frontend.json'
 import { criarGrafo } from './grafo'
+import { hab } from './fixtures'
 import { calcularEstados, sugerirPrerequisitos } from './estados'
-import type { Carreira, Habilidade } from './tipos'
-
-// Atalho para montar habilidades de teste sem repetir campos irrelevantes.
-function hab(id: string, prerequisitos: string[] = []): Habilidade {
-  return { id, nome: id, area: 'x', descricao: '', prerequisitos, origem: 'autores', fontes: [] }
-}
+import type { Carreira } from './tipos'
 
 // Grafo pequeno, igual ao exemplo da explicação:
 // logica -> js -> dom -> react    e    html -> html-sem -> dom

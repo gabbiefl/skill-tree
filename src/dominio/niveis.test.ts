@@ -1,12 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import frontendJson from '../../dados/frontend.json'
 import { criarGrafo } from './grafo'
+import { hab } from './fixtures'
 import { calcularNiveis } from './niveis'
-import type { Carreira, Habilidade } from './tipos'
-
-function hab(id: string, prerequisitos: string[] = []): Habilidade {
-  return { id, nome: id, area: 'x', descricao: '', prerequisitos, origem: 'autores', fontes: [] }
-}
+import type { Carreira } from './tipos'
 
 describe('calcularNiveis', () => {
   it('raízes ficam no nível 0 e cada habilidade, uma coluna após o pré-requisito', () => {

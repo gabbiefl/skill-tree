@@ -41,6 +41,26 @@ describe('dados da carreira Front-end', () => {
     expect(frontend.habilidades.some((h) => h.prerequisitos.length === 0)).toBe(true)
   })
 
+  it('toda habilidade tem pelo menos 1 tópico', () => {
+    for (const h of frontend.habilidades) {
+      expect(h.topicos.length, `${h.id} sem tópicos`).toBeGreaterThan(0)
+    }
+  })
+
+  it('ids de tópicos são únicos em todo o mapa e começam com o id da habilidade', () => {
+    const todos = frontend.habilidades.flatMap((h) => h.topicos.map((t) => ({ h: h.id, id: t.id })))
+    expect(new Set(todos.map((t) => t.id)).size).toBe(todos.length)
+    for (const t of todos) {
+      expect(t.id.startsWith(`${t.h}.`), `${t.id} deveria começar com "${t.h}."`).toBe(true)
+    }
+  })
+
+  it('todo tópico tem nome preenchido', () => {
+    for (const h of frontend.habilidades) {
+      for (const t of h.topicos) expect(t.nome.trim(), t.id).not.toBe('')
+    }
+  })
+
   it('cita a fonte de toda habilidade que vem do roadmap.sh', () => {
     for (const h of frontend.habilidades.filter((x) => x.origem === 'roadmap.sh')) {
       expect(h.fontes.length, `${h.id} sem fonte`).toBeGreaterThan(0)

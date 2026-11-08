@@ -20,6 +20,12 @@
       "area": "fundamentos",
       "descricao": "Navegador, servidor, endereços (URL e DNS) e a conversa entre eles por HTTP.",
       "prerequisitos": [],
+      "topicos": [
+        { "id": "internet.cliente-servidor", "nome": "Cliente e servidor" },
+        { "id": "internet.url-dns", "nome": "Endereços: URL e DNS" },
+        { "id": "internet.http", "nome": "HTTP: requisições e respostas" },
+        { "id": "internet.navegador", "nome": "O que o navegador faz ao abrir uma página" }
+      ],
       "origem": "autores",
       "fontes": []
     },
@@ -29,6 +35,13 @@
       "area": "fundamentos",
       "descricao": "Pensar em passos: sequência, decisões e repetições, antes de qualquer linguagem.",
       "prerequisitos": [],
+      "topicos": [
+        { "id": "logica.algoritmos", "nome": "Algoritmos: resolver problemas em passos" },
+        { "id": "logica.variaveis", "nome": "Variáveis e tipos de dados" },
+        { "id": "logica.condicionais", "nome": "Condicionais" },
+        { "id": "logica.lacos", "nome": "Laços de repetição" },
+        { "id": "logica.funcoes", "nome": "Funções" }
+      ],
       "origem": "autores",
       "fontes": []
     },
@@ -38,6 +51,12 @@
       "area": "fundamentos",
       "descricao": "Navegar por pastas e executar comandos pela linha de comando.",
       "prerequisitos": [],
+      "topicos": [
+        { "id": "terminal.navegar", "nome": "Navegar por pastas" },
+        { "id": "terminal.arquivos", "nome": "Criar, copiar, mover e apagar arquivos" },
+        { "id": "terminal.executar", "nome": "Executar comandos e programas" },
+        { "id": "terminal.ajuda", "nome": "Ler a ajuda de um comando" }
+      ],
       "origem": "autores",
       "fontes": []
     },
@@ -47,6 +66,13 @@
       "area": "html",
       "descricao": "Estrutura de uma página: tags, títulos, parágrafos, links e imagens.",
       "prerequisitos": ["internet"],
+      "topicos": [
+        { "id": "html.estrutura", "nome": "Estrutura do documento (doctype, head, body)" },
+        { "id": "html.titulos", "nome": "Títulos e parágrafos" },
+        { "id": "html.links", "nome": "Links" },
+        { "id": "html.imagens", "nome": "Imagens e texto alternativo" },
+        { "id": "html.atributos", "nome": "Atributos (id, class, src, href)" }
+      ],
       "origem": "roadmap.sh",
       "fontes": ["https://roadmap.sh/frontend"]
     },
@@ -56,6 +82,14 @@
       "area": "html",
       "descricao": "Usar as tags que dão significado ao conteúdo e criar formulários para receber dados.",
       "prerequisitos": ["html"],
+      "topicos": [
+        { "id": "html-semantico.tags", "nome": "Tags semânticas (header, nav, main, footer)" },
+        { "id": "html-semantico.titulos", "nome": "Títulos e hierarquia" },
+        { "id": "html-semantico.listas-tabelas", "nome": "Listas e tabelas" },
+        { "id": "html-semantico.formularios", "nome": "Formulários e campos de entrada" },
+        { "id": "html-semantico.rotulos", "nome": "Rótulos (label) e agrupamento de campos" },
+        { "id": "html-semantico.validacao", "nome": "Validação nativa do navegador" }
+      ],
       "origem": "autores",
       "fontes": []
     },
@@ -65,6 +99,12 @@
       "area": "html",
       "descricao": "Fazer páginas que também funcionem para quem usa leitor de tela ou teclado.",
       "prerequisitos": ["html-semantico"],
+      "topicos": [
+        { "id": "acessibilidade.alt-rotulos", "nome": "Texto alternativo e rótulos" },
+        { "id": "acessibilidade.teclado", "nome": "Navegação por teclado e foco" },
+        { "id": "acessibilidade.contraste", "nome": "Contraste de cores" },
+        { "id": "acessibilidade.leitores", "nome": "Leitores de tela e ARIA básico" }
+      ],
       "origem": "roadmap.sh",
       "fontes": ["https://roadmap.sh/frontend"]
     },
@@ -74,6 +114,12 @@
       "area": "html",
       "descricao": "Organizar a página para que mecanismos de busca a entendam e a encontrem.",
       "prerequisitos": ["html-semantico"],
+      "topicos": [
+        { "id": "seo.titulo-descricao", "nome": "Título e descrição da página" },
+        { "id": "seo.hierarquia", "nome": "Hierarquia de títulos" },
+        { "id": "seo.urls", "nome": "URLs legíveis e links internos" },
+        { "id": "seo.indexacao", "nome": "Indexação (robots.txt e sitemap)" }
+      ],
       "origem": "roadmap.sh",
       "fontes": ["https://roadmap.sh/frontend"]
     },
@@ -83,6 +129,14 @@
       "area": "css",
       "descricao": "Cores, fontes, espaçamentos e seletores para dar aparência à página.",
       "prerequisitos": ["html"],
+      "topicos": [
+        { "id": "css.seletores", "nome": "Seletores" },
+        { "id": "css.cores", "nome": "Cores e fundos" },
+        { "id": "css.tipografia", "nome": "Tipografia" },
+        { "id": "css.caixa", "nome": "Modelo de caixa (margin, border, padding)" },
+        { "id": "css.cascata", "nome": "Especificidade e cascata" },
+        { "id": "css.unidades", "nome": "Unidades (px, rem, %, vw)" }
+      ],
       "origem": "roadmap.sh",
       "fontes": ["https://roadmap.sh/frontend"]
     },
@@ -92,6 +146,13 @@
       "area": "css",
       "descricao": "Organizar elementos em linhas, colunas e grades.",
       "prerequisitos": ["css"],
+      "topicos": [
+        { "id": "layout.fluxo", "nome": "Fluxo normal e display" },
+        { "id": "layout.flex-eixo", "nome": "Flexbox: eixo e alinhamento" },
+        { "id": "layout.flex-quebra", "nome": "Flexbox: quebra e distribuição de espaço" },
+        { "id": "layout.grid", "nome": "CSS Grid: linhas, colunas e áreas" },
+        { "id": "layout.posicionamento", "nome": "Posicionamento (relative, absolute, sticky)" }
+      ],
       "origem": "autores",
       "fontes": []
     },
@@ -101,6 +162,12 @@
       "area": "css",
       "descricao": "Adaptar a página a telas de celular, tablet e computador.",
       "prerequisitos": ["layout"],
+      "topicos": [
+        { "id": "responsivo.viewport", "nome": "Meta viewport" },
+        { "id": "responsivo.media-queries", "nome": "Media queries" },
+        { "id": "responsivo.flexiveis", "nome": "Unidades e imagens flexíveis" },
+        { "id": "responsivo.mobile-first", "nome": "Abordagem mobile first" }
+      ],
       "origem": "roadmap.sh",
       "fontes": ["https://roadmap.sh/frontend"]
     },
@@ -110,6 +177,12 @@
       "area": "css",
       "descricao": "Princípios de experiência do usuário: clareza, hierarquia visual e consistência.",
       "prerequisitos": ["responsivo"],
+      "topicos": [
+        { "id": "ux.hierarquia", "nome": "Hierarquia visual e legibilidade" },
+        { "id": "ux.consistencia", "nome": "Consistência e padrões de interface" },
+        { "id": "ux.feedback", "nome": "Feedback e estados (erro, carregando, vazio)" },
+        { "id": "ux.fluxos", "nome": "Fluxos simples e teste com pessoas reais" }
+      ],
       "origem": "roadmap.sh",
       "fontes": ["https://roadmap.sh/frontend"]
     },
@@ -119,6 +192,14 @@
       "area": "javascript",
       "descricao": "Variáveis, funções, condicionais, laços, listas e objetos.",
       "prerequisitos": ["logica"],
+      "topicos": [
+        { "id": "js-basico.variaveis", "nome": "Variáveis (let, const) e tipos" },
+        { "id": "js-basico.condicionais", "nome": "Operadores e condicionais" },
+        { "id": "js-basico.lacos", "nome": "Laços de repetição" },
+        { "id": "js-basico.funcoes", "nome": "Funções" },
+        { "id": "js-basico.arrays", "nome": "Arrays e seus métodos (map, filter)" },
+        { "id": "js-basico.objetos", "nome": "Objetos e JSON" }
+      ],
       "origem": "roadmap.sh",
       "fontes": ["https://roadmap.sh/frontend"]
     },
@@ -128,6 +209,13 @@
       "area": "javascript",
       "descricao": "Alterar a página com JavaScript e reagir a cliques e teclas.",
       "prerequisitos": ["js-basico", "html-semantico"],
+      "topicos": [
+        { "id": "dom.selecionar", "nome": "Selecionar elementos" },
+        { "id": "dom.alterar", "nome": "Alterar texto, atributos e classes" },
+        { "id": "dom.criar-remover", "nome": "Criar e remover elementos" },
+        { "id": "dom.eventos", "nome": "Eventos (click, input, submit)" },
+        { "id": "dom.formularios", "nome": "Ler e validar dados de formulários" }
+      ],
       "origem": "autores",
       "fontes": []
     },
@@ -137,6 +225,13 @@
       "area": "javascript",
       "descricao": "Lidar com tarefas que demoram, usando Promises e async/await.",
       "prerequisitos": ["js-basico"],
+      "topicos": [
+        { "id": "js-async.sincrono", "nome": "Síncrono e assíncrono" },
+        { "id": "js-async.callbacks", "nome": "Callbacks e temporizadores" },
+        { "id": "js-async.promises", "nome": "Promises" },
+        { "id": "js-async.async-await", "nome": "async/await" },
+        { "id": "js-async.erros", "nome": "Tratamento de erros" }
+      ],
       "origem": "autores",
       "fontes": []
     },
@@ -146,6 +241,12 @@
       "area": "javascript",
       "descricao": "Buscar e enviar dados a um servidor por meio de requisições HTTP.",
       "prerequisitos": ["js-async", "internet"],
+      "topicos": [
+        { "id": "api-rest.conceito", "nome": "O que é uma API REST (recursos e verbos HTTP)" },
+        { "id": "api-rest.fetch", "nome": "fetch e leitura de JSON" },
+        { "id": "api-rest.status", "nome": "Códigos de status e erros" },
+        { "id": "api-rest.post", "nome": "Envio de dados (POST) e cabeçalhos" }
+      ],
       "origem": "roadmap.sh",
       "fontes": ["https://roadmap.sh/frontend"]
     },
@@ -155,6 +256,13 @@
       "area": "javascript",
       "descricao": "JavaScript com tipos, que aponta erros antes de o código rodar.",
       "prerequisitos": ["js-basico"],
+      "topicos": [
+        { "id": "typescript.tipos", "nome": "Tipos básicos e inferência" },
+        { "id": "typescript.interfaces", "nome": "Interfaces e tipos de objetos" },
+        { "id": "typescript.funcoes", "nome": "Tipagem de funções" },
+        { "id": "typescript.uniao", "nome": "União e valores opcionais" },
+        { "id": "typescript.genericos", "nome": "Genéricos (noções)" }
+      ],
       "origem": "roadmap.sh",
       "fontes": ["https://roadmap.sh/frontend"]
     },
@@ -164,6 +272,13 @@
       "area": "ferramentas",
       "descricao": "Versionar o código, voltar atrás em mudanças e colaborar com outras pessoas.",
       "prerequisitos": ["terminal"],
+      "topicos": [
+        { "id": "git.commit", "nome": "Repositório, commit e histórico" },
+        { "id": "git.branches", "nome": "Branches e merge" },
+        { "id": "git.remoto", "nome": "Repositório remoto (clone, push, pull)" },
+        { "id": "git.pull-request", "nome": "Pull requests e revisão de código" },
+        { "id": "git.gitignore-conflitos", "nome": ".gitignore e conflitos" }
+      ],
       "origem": "roadmap.sh",
       "fontes": ["https://roadmap.sh/frontend"]
     },
@@ -173,6 +288,12 @@
       "area": "ferramentas",
       "descricao": "Instalar e gerenciar bibliotecas de terceiros num projeto.",
       "prerequisitos": ["js-basico", "terminal"],
+      "topicos": [
+        { "id": "npm.package-json", "nome": "package.json" },
+        { "id": "npm.dependencias", "nome": "Instalar e remover dependências" },
+        { "id": "npm.scripts", "nome": "Scripts (npm run)" },
+        { "id": "npm.versoes", "nome": "Versões e package-lock" }
+      ],
       "origem": "autores",
       "fontes": []
     },
@@ -182,6 +303,12 @@
       "area": "ferramentas",
       "descricao": "Empacotar e servir o projeto durante o desenvolvimento e na publicação.",
       "prerequisitos": ["npm"],
+      "topicos": [
+        { "id": "build.bundler", "nome": "Para que serve um bundler" },
+        { "id": "build.dev-server", "nome": "Servidor de desenvolvimento e recarga automática" },
+        { "id": "build.producao", "nome": "Gerar a versão de produção" },
+        { "id": "build.publicacao", "nome": "Variáveis de ambiente e publicação" }
+      ],
       "origem": "autores",
       "fontes": []
     },
@@ -191,6 +318,13 @@
       "area": "qualidade",
       "descricao": "Escrever código que verifica se o seu código funciona.",
       "prerequisitos": ["js-basico"],
+      "topicos": [
+        { "id": "testes.por-que", "nome": "Por que e o que testar" },
+        { "id": "testes.unidade", "nome": "Testes de unidade" },
+        { "id": "testes.assercoes", "nome": "Asserções e casos de borda" },
+        { "id": "testes.componentes", "nome": "Testes de componentes de interface" },
+        { "id": "testes.automatizar", "nome": "Executar testes automaticamente" }
+      ],
       "origem": "roadmap.sh",
       "fontes": ["https://roadmap.sh/frontend"]
     },
@@ -200,6 +334,12 @@
       "area": "qualidade",
       "descricao": "Usar as ferramentas do navegador para inspecionar a página e achar erros.",
       "prerequisitos": ["dom"],
+      "topicos": [
+        { "id": "devtools.inspecionar", "nome": "Inspecionar elementos e estilos" },
+        { "id": "devtools.console", "nome": "Console e mensagens de erro" },
+        { "id": "devtools.breakpoints", "nome": "Depurar com breakpoints" },
+        { "id": "devtools.rede", "nome": "Aba de rede e desempenho" }
+      ],
       "origem": "roadmap.sh",
       "fontes": ["https://roadmap.sh/frontend"]
     },
@@ -209,6 +349,13 @@
       "area": "qualidade",
       "descricao": "Medir e melhorar a velocidade de carregamento e a fluidez da página.",
       "prerequisitos": ["responsivo", "api-rest"],
+      "topicos": [
+        { "id": "desempenho.vitals", "nome": "Core Web Vitals" },
+        { "id": "desempenho.imagens", "nome": "Otimizar imagens" },
+        { "id": "desempenho.js-css", "nome": "Carregamento de JS e CSS (minificar, lazy load)" },
+        { "id": "desempenho.cache", "nome": "Cache" },
+        { "id": "desempenho.lighthouse", "nome": "Medir com Lighthouse" }
+      ],
       "origem": "roadmap.sh",
       "fontes": ["https://roadmap.sh/frontend"]
     },
@@ -218,6 +365,13 @@
       "area": "react",
       "descricao": "Montar interfaces a partir de componentes reutilizáveis.",
       "prerequisitos": ["dom", "npm"],
+      "topicos": [
+        { "id": "react.componentes", "nome": "Componentes e JSX" },
+        { "id": "react.props", "nome": "Props" },
+        { "id": "react.listas", "nome": "Listas e renderização condicional" },
+        { "id": "react.eventos", "nome": "Eventos" },
+        { "id": "react.composicao", "nome": "Composição (children)" }
+      ],
       "origem": "roadmap.sh",
       "fontes": ["https://roadmap.sh/frontend"]
     },
@@ -227,6 +381,14 @@
       "area": "react",
       "descricao": "Guardar e atualizar dados dentro de componentes.",
       "prerequisitos": ["react"],
+      "topicos": [
+        { "id": "react-hooks.use-state", "nome": "useState" },
+        { "id": "react-hooks.eventos-estado", "nome": "Eventos e atualização de estado" },
+        { "id": "react-hooks.use-effect", "nome": "useEffect" },
+        { "id": "react-hooks.dependencias", "nome": "Dependências e limpeza de efeitos" },
+        { "id": "react-hooks.use-ref", "nome": "useRef" },
+        { "id": "react-hooks.hooks-proprios", "nome": "Hooks personalizados" }
+      ],
       "origem": "autores",
       "fontes": []
     },
@@ -236,6 +398,13 @@
       "area": "react",
       "descricao": "Carregar dados de um servidor e exibi-los em componentes.",
       "prerequisitos": ["react-hooks", "api-rest"],
+      "topicos": [
+        { "id": "react-api.fetch-effect", "nome": "Buscar dados com fetch e useEffect" },
+        { "id": "react-api.carregando-erro", "nome": "Estados de carregamento e erro" },
+        { "id": "react-api.listas-api", "nome": "Renderizar listas vindas da API" },
+        { "id": "react-api.formularios", "nome": "Formulários controlados e envio" },
+        { "id": "react-api.bibliotecas", "nome": "Bibliotecas de dados (noções)" }
+      ],
       "origem": "autores",
       "fontes": []
     }

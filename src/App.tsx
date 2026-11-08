@@ -1,6 +1,12 @@
 import { useState } from 'react'
 import { frontend, grafoFrontend } from './carreiraFrontend'
 import { sugerirPrerequisitos } from './dominio/estados'
+import {
+  calcularConcluidas,
+  desmarcarHabilidade,
+  marcarComPrerequisitos,
+  marcarHabilidade,
+} from './dominio/progresso'
 import EscolhaCarreira from './componentes/EscolhaCarreira'
 import ModalConhecimentos from './componentes/ModalConhecimentos'
 import ModalSugestao from './componentes/ModalSugestao'
@@ -18,8 +24,9 @@ interface Pendencia {
 
 export default function App() {
   const [etapa, setEtapa] = useState<Etapa>('carreira')
-  // Única fonte de verdade: o que a pessoa concluiu. O resto é calculado.
-  const [concluidas, setConcluidas] = useState<ReadonlySet<string>>(new Set())
+  // Única fonte de verdade: os tópicos que a pessoa concluiu. O resto é calculado.
+  const [topicos, setTopicos] = useState<ReadonlySet<string>>(new Set())
+  const concluidas = calcularConcluidas(grafoFrontend, topicos)
   const [pendencia, setPendencia] = useState<Pendencia | null>(null)
 
   const nomeDe = (id: string) => grafoFrontend.habilidades.get(id)!.nome
@@ -27,14 +34,12 @@ export default function App() {
   // Usada pelo modal de conhecimentos e pela trilha: o mesmo fluxo nos dois lugares.
   function alternar(id: string) {
     if (concluidas.has(id)) {
-      const novo = new Set(concluidas)
-      novo.delete(id)
-      setConcluidas(novo)
+      setTopicos(desmarcarHabilidade(grafoFrontend, id, topicos))
       return
     }
     const sugestoes = sugerirPrerequisitos(grafoFrontend, id, concluidas)
     if (sugestoes.length === 0) {
-      setConcluidas(new Set(concluidas).add(id))
+      setTopicos(marcarHabilidade(grafoFrontend, id, topicos))
     } else {
       setPendencia({ id, sugestoes })
     }
@@ -42,9 +47,11 @@ export default function App() {
 
   function responder(aceitou: boolean) {
     if (!pendencia) return
-    const novo = new Set(concluidas).add(pendencia.id)
-    if (aceitou) pendencia.sugestoes.forEach((s) => novo.add(s))
-    setConcluidas(novo)
+    setTopicos(
+      aceitou
+        ? marcarComPrerequisitos(grafoFrontend, pendencia.id, topicos)
+        : marcarHabilidade(grafoFrontend, pendencia.id, topicos),
+    )
     setPendencia(null)
   }
 

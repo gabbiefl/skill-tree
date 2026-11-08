@@ -1,13 +1,10 @@
 import { describe, expect, it } from 'vitest'
 import frontendJson from '../../dados/frontend.json'
 import { criarGrafo } from './grafo'
+import { hab } from './fixtures'
 import type { Grafo } from './grafo'
 import { ordenacaoTopologica, trilhaPersonalizada, validarSemCiclos } from './ordenacao'
-import type { Carreira, Habilidade } from './tipos'
-
-function hab(id: string, prerequisitos: string[] = [], area = 'x'): Habilidade {
-  return { id, nome: id, area, descricao: '', prerequisitos, origem: 'autores', fontes: [] }
-}
+import type { Carreira } from './tipos'
 
 // Propriedade que define uma ordenação topológica válida: todo pré-requisito vem antes.
 function ordemValida(grafo: Grafo, ordem: string[]): boolean {
