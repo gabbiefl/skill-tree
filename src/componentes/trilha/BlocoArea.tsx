@@ -4,6 +4,7 @@ import { estadoDaArea } from '../../dominio/areas'
 import { progressoDaHabilidade } from '../../dominio/progresso'
 import type { Area, Habilidade } from '../../dominio/tipos'
 import Icone, { IconeEstado } from '../Icones'
+import { iconeDaArea } from './visualDasAreas'
 
 interface Props {
   area: Area
@@ -54,10 +55,17 @@ export default function BlocoArea({
 
   return (
     <div className="ar-wrap">
-      <div className={`ar ${CLASSE_DO_ESTADO[estado]}${aberta ? ' open' : ''}`} ref={(el) => registrar(`area:${area.id}`, el)}>
+      <div
+        className={`ar ${CLASSE_DO_ESTADO[estado]}${aberta ? ' open' : ''}`}
+        data-area={area.id}
+        ref={(el) => registrar(`area:${area.id}`, el)}
+      >
         <button type="button" className="ar-cab" aria-expanded={aberta} onClick={onAlternar}>
           <span className="ar-t">
             <span className="ar-nome">
+              <span className="ar-ico" aria-hidden="true">
+                <Icone nome={iconeDaArea(area.id)} />
+              </span>
               {estado === 'bloqueada' && <Icone nome="cadeado" />}
               {area.nome}
             </span>

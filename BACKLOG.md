@@ -36,4 +36,6 @@ Ideia nova? Entra aqui, não no código. Isso evita *scope creep* (o escopo cres
 | B-028 | Teste: grafo de áreas acíclico e ligações entre áreas avançam de etapa | S | Feito | 4 |
 | B-029 | Trilha personalizada com meta (ex.: chegar em React) | S | Feito na lógica e testada; tela "Ver ordem de estudo" retirada em 08/11 | 4 |
 | B-030 | "Recomeçar do zero" no menu de configurações, com confirmação (útil para reiniciar a demo na feira) | S | Feito | 7 |
+| B-031 | Identidade visual: cor e ícone por área, ícone por nível (SVG próprio, sem licença de terceiros) | S | Em andamento | 8 |
+| B-032 | Ilustrações na tela de escolha de carreira (se sobrar tempo) | C | A fazer | 8 |
 | B-016 | Outras carreiras além de Front-end | W | Adiado | — |

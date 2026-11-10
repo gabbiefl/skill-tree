@@ -1,0 +1,52 @@
+/* Identidade visual das áreas: uma cor e um ícone por área.
+   Regra de ouro: a cor da área é só identidade. O estado (concluída, disponível, bloqueada)
+   continua dito pela borda e pelo ícone de estado, e o bloco bloqueado fica cinza. */
+
+.ar[data-area] {
+  --ar-cor: #6565c4; /* faixa e barra de progresso */
+  --ar-escura: #3b3b9a; /* ícone */
+  --ar-clara: #f1f1fb; /* fundo do ícone */
+  background-image: linear-gradient(var(--ar-cor), var(--ar-cor));
+  background-size: 100% 6px;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+.ar[data-area='fundamentos'] { --ar-cor: #6565c4; --ar-escura: #3b3b9a; --ar-clara: #ececfa; }
+.ar[data-area='html']        { --ar-cor: #e8590c; --ar-escura: #9c3a05; --ar-clara: #ffe8d9; }
+.ar[data-area='css']         { --ar-cor: #d6336c; --ar-escura: #94204a; --ar-clara: #fde3ec; }
+.ar[data-area='javascript']  { --ar-cor: #f2b600; --ar-escura: #7a5a00; --ar-clara: #fff2c2; }
+.ar[data-area='ferramentas'] { --ar-cor: #66a80f; --ar-escura: #3f6b08; --ar-clara: #e6f5cf; }
+.ar[data-area='qualidade']   { --ar-cor: #0ca678; --ar-escura: #066a4d; --ar-clara: #d4f4e8; }
+.ar[data-area='react']       { --ar-cor: #15aabf; --ar-escura: #0b6573; --ar-clara: #d3f1f6; }
+
+/* Bloqueada: a cor some de propósito, para o cinza e o cadeado continuarem óbvios. */
+.ar[data-area].is-locked {
+  --ar-escura: var(--st-locked-ink);
+  --ar-clara: #dfe2ec;
+  background-image: none;
+}
+
+.ar-ico {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--ar-clara, transparent);
+  color: var(--ar-escura, currentColor);
+  font-size: 21px;
+}
+
+.ar[data-area] .bar i {
+  background: var(--ar-cor);
+}
+.ar[data-area].is-locked .bar i {
+  background: var(--st-locked-line);
+}
+
+.lvl-badge .i {
+  font-size: 26px;
+  stroke-width: 2.2;
+}
