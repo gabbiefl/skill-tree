@@ -91,7 +91,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 20px;
   text-align: center;
 }
 
@@ -105,7 +105,7 @@ body {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
   width: 100%;
-  margin-top: 22px;
+  margin-top: 40px;
   text-align: left;
 }
 
@@ -114,7 +114,7 @@ body {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 36px;
   text-align: left;
 }
 
@@ -124,7 +124,8 @@ body {
   justify-content: center;
   align-items: center;
   gap: 12px;
-  margin-top: 10px;
+  margin-top: 32px;
+  padding-bottom: 16px;
 }
 
 @media (max-width: 1100px) {
@@ -579,4 +580,187 @@ body {
   .bar > i {
     transition: none;
   }
+}
+
+/* ---------- tela de escolha: logo, áreas e evolução ---------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+.hero > * {
+  position: relative; /* fica acima da mancha de fundo */
+}
+
+/* Mancha magenta (cor da marca) ao fundo, só decoração. */
+.hero::before {
+  content: '';
+  position: absolute;
+  right: 8%;
+  top: 10px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(255, 0, 255, 0.14);
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+/* Só o símbolo da marca (o mesmo do cabeçalho). O PNG horizontal tem o símbolo à esquerda e
+   muita margem: o recorte é feito aqui, sem editar a imagem. */
+.hero-logo {
+  position: relative;
+  width: 220px;
+  height: 204px;
+  overflow: hidden;
+}
+.hero-logo img {
+  position: absolute;
+  width: 1209px;
+  max-width: none;
+  left: -237px;
+  top: -127px;
+  mix-blend-mode: multiply; /* dissolve o fundo branco do PNG */
+}
+
+.jornada {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  margin-top: 36px;
+}
+.jornada ol {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.jornada li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 96px;
+  font: 700 15px/18px var(--st-font-head);
+  color: var(--st-navy);
+}
+/* Linha ligando um nível ao próximo, passando atrás dos círculos. */
+.jornada li + li::before {
+  content: '';
+  position: absolute;
+  top: 22px;
+  right: 50%;
+  width: 100%;
+  border-top: 3px dotted var(--st-edge);
+  z-index: -1;
+}
+.jornada li:last-child .lvl-badge {
+  background: var(--st-navy);
+  border-color: #ccff00;
+}
+
+@media (max-width: 640px) {
+  .jornada li {
+    width: 72px;
+  }
+}
+
+/* Mais respiro dentro dos cartões; os azulejos das áreas cabem numa linha só. */
+.escolha .cc .bd {
+  gap: 16px;
+}
+.areas-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 8px 0 12px;
+}
+.areas-lista ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0 -8px;
+  padding: 0;
+  list-style: none;
+}
+.areas-lista li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 6px 8px;
+  border-radius: 12px;
+  outline: none;
+  transition: background-color 0.15s ease;
+}
+.areas-lista li:hover,
+.areas-lista li:focus-within {
+  background: var(--st-navy-50);
+}
+.areas-lista li:focus-visible {
+  box-shadow: var(--st-focus);
+}
+.areas-lista b {
+  display: block;
+  font: 700 15px/20px var(--st-font-head);
+  color: var(--st-navy);
+}
+/* As habilidades ficam recolhidas e abrem embaixo do nome ao passar o mouse (ou focar, no teclado). */
+.areas-lista small {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  font: 400 14px/19px var(--st-font-body);
+  color: var(--st-ink-2);
+  transition:
+    grid-template-rows 0.2s ease,
+    opacity 0.2s ease;
+}
+.areas-lista small > span {
+  min-height: 0;
+  overflow: hidden;
+}
+.areas-lista li:hover small,
+.areas-lista li:focus-within small {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+/* Sem mouse (celular): não há hover, então as habilidades ficam sempre visíveis. */
+@media (hover: none) {
+  .areas-lista small {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .areas-lista small,
+  .areas-lista li {
+    transition: none;
+  }
+}
+.areas-lista .ar-ico {
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  border-radius: 8px;
 }

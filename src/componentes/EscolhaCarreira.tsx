@@ -1,38 +1,20 @@
 import ChipEstado from './ChipEstado'
 import Icone from './Icones'
+import type { NomeIcone } from './Icones'
+import { CARREIRAS_EM_BREVE } from './carreirasEmBreve'
+import { iconeDaArea, iconeDoNivel } from './trilha/visualDasAreas'
+import logoHorizontal from '../assets/horizontal-light-1200.png'
 
 interface Props {
   nome: string
   descricao: string
-  totalAreas: number
+  areas: { id: string; nome: string; habilidades: string[] }[]
+  niveis: string[]
   totalHabilidades: number
   // Já existe progresso salvo: o botão passa a "Continuar".
   continuar: boolean
   onComecar: () => void
 }
-
-// Só o Front-end está mapeado. As outras aparecem como "em breve" para mostrar a
-// visão do projeto sem prometer o que ainda não existe.
-const EM_BREVE = [
-  {
-    nome: 'Desenvolvedor Back-end',
-    descricao: 'Servidores, bancos de dados e APIs por trás dos aplicativos.',
-    linhas: 'M60 75L130 45M60 75L130 105M130 45L210 45M130 105L210 105M210 45L262 75M210 105L262 75',
-    nos: [[60, 75], [130, 45], [130, 105], [210, 45], [210, 105], [262, 75]],
-  },
-  {
-    nome: 'Analista de Dados',
-    descricao: 'Colete, limpe e analise dados para responder perguntas.',
-    linhas: 'M56 100L120 60M120 60L190 90M190 90L256 48M120 60L190 40',
-    nos: [[56, 100], [120, 60], [190, 90], [190, 40], [256, 48]],
-  },
-  {
-    nome: 'Desenvolvedor Mobile',
-    descricao: 'Aplicativos para celular, do primeiro layout à publicação.',
-    linhas: 'M52 75L112 42M52 75L112 108M112 42L180 75M112 108L180 75M180 75L254 75',
-    nos: [[52, 75], [112, 42], [112, 108], [180, 75], [254, 75]],
-  },
-]
 
 const PASSOS = [
   { titulo: 'Escolha a carreira', texto: 'Cada carreira vira um mapa de habilidades com pré-requisitos.' },
@@ -80,16 +62,56 @@ function ArteEmBreve({ linhas, nos }: { linhas: string; nos: number[][] }) {
   )
 }
 
-export default function EscolhaCarreira({ nome, descricao, totalAreas, totalHabilidades, continuar, onComecar }: Props) {
+interface ItemArea {
+  nome: string
+  icone: NomeIcone
+  habilidades: string[]
+  area?: string // id da área real (cores do Front-end)
+  cor?: string // nome da cor na paleta (prévias)
+}
+
+// Lista de áreas com ícone colorido e as primeiras habilidades de cada uma.
+function ListaAreas({ rotulo, itens }: { rotulo: string; itens: ItemArea[] }) {
+  return (
+    <div className="areas-lista">
+      <span className="lbl">{rotulo}</span>
+      <ul>
+        {itens.map((a) => {
+          const resto = a.habilidades.length - 3
+          return (
+            <li key={a.nome} tabIndex={0}>
+              <span className="ar-ico" data-area={a.area} data-cor={a.cor} aria-hidden="true">
+                <Icone nome={a.icone} />
+              </span>
+              <div>
+                <b>{a.nome}</b>
+                <small>
+                  <span>
+                    {a.habilidades.slice(0, 3).join(' · ')}
+                    {resto > 0 && ` · +${resto}`}
+                  </span>
+                </small>
+              </div>
+            </li>
+          )
+        })}
+      </ul>
+    </div>
+  )
+}
+
+export default function EscolhaCarreira({ nome, descricao, areas, niveis, totalHabilidades, continuar, onComecar }: Props) {
   return (
     <main className="escolha">
-      <span className="eyebrow">
-        <Icone nome="livro" /> Guia de estudos para carreiras de TI
-      </span>
-      <h1 className="h-display">Qual carreira de TI você quer explorar?</h1>
-      <p className="lead">
-        Veja a trilha como um mapa de habilidades. Marque o que você já sabe e descubra o que estudar agora.
-      </p>
+      <header className="hero">
+        <div className="hero-logo">
+          <img src={logoHorizontal} alt="SkillTree" />
+        </div>
+        <h1 className="h-display">Qual carreira de TI você quer explorar?</h1>
+        <p className="lead">
+          Veja a trilha como um mapa de habilidades. Marque o que você já sabe e descubra o que estudar agora.
+        </p>
+      </header>
 
       <section className="cartoes" aria-label="Carreiras">
         <article className="cc">
@@ -105,9 +127,13 @@ export default function EscolhaCarreira({ nome, descricao, totalAreas, totalHabi
             <h3>{nome}</h3>
             <p>{descricao}</p>
             <div className="meta">
-              <span className="chip neutral">{totalAreas} áreas</span>
+              <span className="chip neutral">{areas.length} áreas</span>
               <span className="chip neutral">{totalHabilidades} habilidades</span>
             </div>
+            <ListaAreas
+              rotulo="Áreas da trilha"
+              itens={areas.map((a) => ({ nome: a.nome, icone: iconeDaArea(a.id), habilidades: a.habilidades, area: a.id }))}
+            />
             <span className="grow" />
             <button type="button" className="btn pri lg cheio" onClick={onComecar}>
               {continuar ? 'Continuar a trilha' : 'Começar a trilha'} <Icone nome="setaDireita" />
@@ -115,7 +141,7 @@ export default function EscolhaCarreira({ nome, descricao, totalAreas, totalHabi
           </div>
         </article>
 
-        {EM_BREVE.map((c) => (
+        {CARREIRAS_EM_BREVE.map((c) => (
           <article key={c.nome} className="cc soon">
             <div className="art">
               <ArteEmBreve linhas={c.linhas} nos={c.nos} />
@@ -128,6 +154,11 @@ export default function EscolhaCarreira({ nome, descricao, totalAreas, totalHabi
               </div>
               <h3>{c.nome}</h3>
               <p>{c.descricao}</p>
+              <div className="meta">
+                <span className="chip neutral">{c.areas.length} áreas</span>
+                <span className="chip neutral">{c.areas.reduce((n, a) => n + a.habilidades.length, 0)} habilidades</span>
+              </div>
+              <ListaAreas rotulo="Áreas da trilha" itens={c.areas} />
               <span className="grow" />
               <button type="button" className="btn dis lg cheio" disabled>
                 Em breve
@@ -135,6 +166,20 @@ export default function EscolhaCarreira({ nome, descricao, totalAreas, totalHabi
             </div>
           </article>
         ))}
+      </section>
+
+      <section className="jornada" aria-label="Níveis">
+        <span className="lbl">Sua evolução</span>
+        <ol>
+          {niveis.map((nivel, i) => (
+            <li key={nivel}>
+              <span className="lvl-badge" aria-hidden="true">
+                <Icone nome={iconeDoNivel(i + 1)} />
+              </span>
+              <b>{nivel}</b>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section className="passos" aria-label="Como funciona">

@@ -80,6 +80,35 @@ const FORMAS = {
     </>
   ),
 
+  // Ícones das prévias das carreiras "em breve".
+  servidor: (
+    <>
+      <rect x="3" y="4" width="18" height="6.5" rx="2" />
+      <rect x="3" y="13.5" width="18" height="6.5" rx="2" />
+      <path d="M7 7.25h.01M7 16.75h.01" />
+    </>
+  ),
+  banco: (
+    <>
+      <ellipse cx="12" cy="6" rx="8" ry="3" />
+      <path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" />
+    </>
+  ),
+  nuvem: <path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 9.5 4.3 4.3 0 0 1 17.5 18z" />,
+  grafico: <path d="M4 20h16M7 20v-7M12 20V5M17 20V10" />,
+  tabela: (
+    <>
+      <rect x="3" y="4" width="18" height="16" rx="2.5" />
+      <path d="M3 10h18M3 15h18M9.5 10v10" />
+    </>
+  ),
+  celular: (
+    <>
+      <rect x="7" y="2.5" width="10" height="19" rx="2.5" />
+      <path d="M11 18.5h2" />
+    </>
+  ),
+
   // Ícones dos níveis: a planta cresce de Semente (1) a Árvore (5).
   semente: (
     <>
