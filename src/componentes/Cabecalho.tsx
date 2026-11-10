@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import logo from '../assets/skilltree-logo.png'
 import type { InfoNivel } from '../dominio/xp'
 import Icone from './Icones'
+import { iconeDoNivel } from './trilha/visualDasAreas'
 
 // Último ganho de XP (aparece por 2 segundos). "nivel" vem preenchido quando o ganho fez subir de nível.
 export interface Ganho {
@@ -65,8 +66,8 @@ export default function Cabecalho({
 
       {comMenu && (
         <>
-          <span className="lvl-badge" aria-label={`Nível ${nivel.numero}`}>
-            {nivel.numero}
+          <span className="lvl-badge" role="img" aria-label={`Nível ${nivel.numero}, ${nivel.nome}`}>
+            <Icone nome={iconeDoNivel(nivel.numero)} />
           </span>
           <div className="hd-meter">
             <div className="top">

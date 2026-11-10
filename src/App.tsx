@@ -88,7 +88,11 @@ export default function App() {
         <EscolhaCarreira
           nome={frontend.carreira.nome}
           descricao={frontend.carreira.descricao}
-          totalAreas={frontend.areas.length}
+          areas={frontend.areas.map((a) => ({
+            ...a,
+            habilidades: frontend.habilidades.filter((h) => h.area === a.id).map((h) => h.nome),
+          }))}
+          niveis={frontend.niveis.map((n) => n.nome)}
           totalHabilidades={frontend.habilidades.length}
           continuar={topicos.size > 0}
           onComecar={comecar}
