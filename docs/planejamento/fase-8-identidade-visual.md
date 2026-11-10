@@ -17,8 +17,7 @@ Dar mais vida à interface sem trocar o design: cada área da trilha ganha uma c
 3. `BlocoArea` mostra o ícone da área e marca o bloco com `data-area`.
 4. Paleta por área em `src/estilos/areas.css` (faixa colorida no topo do bloco, ícone em "azulejo" tingido, barra de progresso na cor da área).
 5. Cabeçalho mostra o ícone do nível no lugar do número (o número continua no texto e no `aria-label`).
-6. Tela de escolha de carreira (B-032): logo da marca em destaque com manchas verde-limão e magenta ao fundo, ícones coloridos das áreas no cartão do Front-end e faixa "Sua evolução" (Semente a Árvore).
-
+6. Tela de escolha de carreira (B-032): símbolo da marca em destaque (o mesmo do cabeçalho) com uma mancha magenta ao fundo, lista de áreas com ícone no cartão do Front-end (habilidades abrem ao passar o mouse) e faixa "Sua evolução" (Semente a Árvore).
 7. Prévia das carreiras "em breve" (pedido do aluno em 10/11): cada cartão lista áreas (com ícone e cor) e as primeiras habilidades. O Front-end mostra os dados reais; Back-end, Analista de Dados e Mobile mostram conteúdo **hipotético**, em `src/componentes/carreirasEmBreve.ts`, com o mesmo rótulo "Áreas da trilha" do Front-end (a identificação como prévia fica no chip "Em breve" e na fala da apresentação).
 
 ## Decisões e alternativas descartadas
