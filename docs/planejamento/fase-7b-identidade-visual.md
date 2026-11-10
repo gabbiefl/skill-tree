@@ -1,4 +1,4 @@
-# Fase 8 — Identidade visual: cor por área e ícones
+# Fase 7b — Identidade visual: cor por área e ícones
 
 **Status:** em andamento (direção aprovada pelo aluno em 10/11; tela de escolha aprovada em 10/11)
 **Prazo:** 11/11

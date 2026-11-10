@@ -26,7 +26,7 @@
 
 Projeto desenvolvido para a Mostra Científica 2026.
 
-> **Status:** em desenvolvimento. Já funcionam: os dados da carreira, as regras de liberação, a ordenação topológica, os tópicos de estudo, a interface principal, o progresso salvo no navegador, o XP e os níveis. Ainda faltam: o deploy no GitHub Pages e o material de apresentação (veja o [roteiro](docs/planejamento/00-roteiro-de-fases.md)).
+> **Status:** em desenvolvimento. Já funcionam: os dados da carreira de referência, as regras de liberação, a ordenação topológica, os tópicos de estudo, a interface (trilha em etapas, painel de tópicos, cores e ícones por área), o progresso salvo no navegador, o XP e os níveis. Ainda faltam: a publicação no GitHub Pages e o material de apresentação (veja o [roteiro](docs/planejamento/00-roteiro-de-fases.md)).
 
 ## 🌱 O problema
 
@@ -52,6 +52,8 @@ A carreira de referência é **Desenvolvedor Front-end**.
 4. Ao clicar numa habilidade, abre-se o guia: descrição, pré-requisitos e uma lista de tópicos. A habilidade só é concluída quando todos os tópicos estão concluídos.
 5. Cada tópico concluído rende **XP** (10 por tópico, mais 50 ao concluir a habilidade), e o nível sobe ao concluir as etapas da trilha: Semente, Broto, Muda, Galho e Árvore.
 
+Só a carreira **Desenvolvedor Front-end** está mapeada. Os cartões "em breve" (Back-end, Analista de Dados e Mobile) mostram uma **prévia ilustrativa** de como seriam as áreas e habilidades: são apenas visuais, ainda sem fonte nem pré-requisitos, e ficam fora dos dados reais.
+
 **Privacidade:** o progresso é guardado só no navegador de quem usa (`localStorage`). Não há conta, servidor nem coleta de dados pessoais. O menu de configurações permite recomeçar do zero.
 
 O andamento de cada item fica no [BACKLOG.md](BACKLOG.md).
@@ -60,20 +62,23 @@ O andamento de cada item fica no [BACKLOG.md](BACKLOG.md).
 
 - [React](https://react.dev/) e [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vite.dev/) (servidor de desenvolvimento e build)
-- [Vitest](https://vitest.dev/) (testes)
+- [Vitest](https://vitest.dev/) (testes) e [Oxlint](https://oxc.rs/docs/guide/usage/linter) (análise do código)
 
 A lógica das estruturas de dados fica separada da interface, em `src/dominio/`, em TypeScript puro. A trilha é HTML/CSS comum, e as ligações entre os blocos são um SVG desenhado a partir da posição real de cada bloco, sem biblioteca de grafos.
 
 ## 🚀 Como executar
 
-Pré-requisito: [Node.js](https://nodejs.org/) 20 ou superior.
+Pré-requisito: [Node.js](https://nodejs.org/) 22.12 ou superior (exigência do Vitest).
 
 ```bash
 npm install     # instala as dependências
 npm run dev     # inicia o servidor de desenvolvimento
 npm test        # executa os testes
+npm run lint    # analisa o código
 npm run build   # gera a versão de produção
 ```
+
+Com o servidor ligado, abra o endereço mostrado no terminal (por padrão, `http://localhost:5173/skill-tree/`; o `/skill-tree/` no final é necessário por causa da publicação no GitHub Pages).
 
 ## 📁 Estrutura
 
@@ -81,7 +86,8 @@ npm run build   # gera a versão de produção
 dados/             dados da carreira em JSON (habilidades, tópicos, áreas e etapas)
 src/dominio/       estruturas de dados e regras, sem React (grafo, estados, ordenação, progresso, XP)
 src/componentes/   interface em React (telas, modais, painel e trilha em etapas)
-src/estilos/       tokens e estilos do design
+src/estilos/       tokens do design, layout e cores por área
+src/assets/        logos do projeto
 docs/planejamento/ planejamento de cada fase
 BACKLOG.md         itens e prioridades
 ```
@@ -90,9 +96,18 @@ BACKLOG.md         itens e prioridades
 
 A pesquisa segue a **Design Science Research (DSR)**, em cinco etapas: identificação do problema, definição dos objetivos da solução, desenvolvimento, demonstração e avaliação.
 
+**Avaliação:** a avaliação prevista é, primeiro, uma **avaliação preliminar interna**, feita pelos integrantes do grupo, que conhecem o sistema e por isso tendem a avaliá-lo melhor do que um usuário novo. O teste de usabilidade e o questionário com estudantes de TI são o **próximo passo**. Quando houver participantes, só entram neste repositório resultados agregados e anônimos.
+
 ## 📚 Fontes dos dados
 
-O mapeamento das habilidades e de seus pré-requisitos toma como ponto de partida o [roadmap.sh](https://roadmap.sh/frontend), usado como referência. As descrições das habilidades e a **recomendação de materiais de estudo** serão pesquisadas e curadas pelos autores do projeto, que reescrevem o conteúdo com suas próprias palavras. Cada habilidade registra as fontes consultadas.
+O mapeamento das habilidades e de seus pré-requisitos toma como ponto de partida o [roadmap.sh](https://roadmap.sh/frontend), usado como referência. Hoje, **14 das 25 habilidades** vêm do roadmap.sh e registram essa fonte; as outras 11 foram incluídas pelos autores, e o campo `origem` de cada uma, em [`dados/frontend.json`](dados/frontend.json), diz qual é o caso.
+
+Os **119 tópicos de estudo** são um **rascunho feito com apoio de um assistente de IA** e ainda **em revisão pelos autores**. Os links de materiais de estudo só serão incluídos depois de verificados pelos autores.
+
+## 🎨 Identidade visual e créditos
+
+- Os ícones (áreas, níveis e interface) são SVGs desenhados para este projeto.
+- As fontes [Lexend](https://fonts.google.com/specimen/Lexend) e [Nunito Sans](https://fonts.google.com/specimen/Nunito+Sans) usam a licença SIL Open Font License e são carregadas do Google Fonts.
 
 ## 📄 Licença
 

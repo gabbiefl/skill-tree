@@ -15,7 +15,7 @@ Ideia nova? Entra aqui, não no código. Isso evita *scope creep* (o escopo cres
 | B-005 | Interface básica: escolher objetivo, marcar conhecimentos, ver trilha | M | Em andamento | 3 |
 | B-006 | Ordenação topológica (Kahn) com testes | M | Feito | 4 |
 | B-007 | Detecção de ciclos nos dados | S | Feito | 4 |
-| B-008 | README e repositório apresentáveis | M | A fazer | 7 |
+| B-008 | README e repositório apresentáveis | M | Em andamento (README atualizado em 10/11; faltam licença e publicação) | 8 |
 | B-009 | Roteiro e material da apresentação | M | A fazer | 8 |
 | B-010 | Avaliação com estudantes: apresentar como próxima etapa, com roteiro de teste e questionário prontos | S | Adiado | 6 |
 | B-011 | Tela de escolha de carreira (só Front-end ativa; demais "em breve") | M | Feito | 3 |
@@ -36,6 +36,6 @@ Ideia nova? Entra aqui, não no código. Isso evita *scope creep* (o escopo cres
 | B-028 | Teste: grafo de áreas acíclico e ligações entre áreas avançam de etapa | S | Feito | 4 |
 | B-029 | Trilha personalizada com meta (ex.: chegar em React) | S | Feito na lógica e testada; tela "Ver ordem de estudo" retirada em 08/11 | 4 |
 | B-030 | "Recomeçar do zero" no menu de configurações, com confirmação (útil para reiniciar a demo na feira) | S | Feito | 7 |
-| B-031 | Identidade visual: cor e ícone por área, ícone por nível (SVG próprio, sem licença de terceiros) | S | Em andamento | 8 |
-| B-032 | Tela de escolha de carreira com mais vida: logo em destaque, ícones das áreas e faixa de níveis | C | Em andamento | 8 |
+| B-031 | Identidade visual: cor e ícone por área, ícone por nível (SVG próprio, sem licença de terceiros) | S | Feito (falta conferência visual dos autores) | 7b |
+| B-032 | Tela de escolha de carreira com mais vida: logo em destaque, ícones das áreas e faixa de níveis; prévia das carreiras "em breve" | C | Feito (falta conferência visual dos autores) | 7b |
 | B-016 | Outras carreiras além de Front-end | W | Adiado | — |
